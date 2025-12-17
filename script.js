@@ -4,13 +4,16 @@
     const root = document.documentElement;
 
     // On initial load, mark entering then remove to animate in
-    window.addEventListener('DOMContentLoaded', ()=>{
+    function runEnter(){
         root.classList.add('is-entering');
-        // next frame remove class to trigger transition
-        requestAnimationFrame(()=>{
-            root.classList.remove('is-entering');
-        });
-    });
+        requestAnimationFrame(()=> root.classList.remove('is-entering'));
+    }
+    if(document.readyState === 'loading'){
+        window.addEventListener('DOMContentLoaded', runEnter);
+    } else {
+        // DOM already parsed (script included at end) — run immediately
+        runEnter();
+    }
 
     // Intercept clicks to animate out for internal navigation
     document.addEventListener('click', (e)=>{

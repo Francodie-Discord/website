@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<title>Francodie — République de Francodie</title>
+	<title>Staff — République de Francodie</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -54,8 +54,6 @@
 			overflow:hidden;
 			box-shadow: var(--card-shadow);
 		}
-		.flag > i{flex:1}
-		.flag .b{background:var(--accent-blue)} .flag .r{background:var(--accent-red)} .flag .o{background:var(--accent-orange)}
 		.title{
 			display:flex;
 			flex-direction:column;
@@ -69,42 +67,24 @@
 			font-weight:600;
 			font-size:0.95rem;
 		}
+
 		.hero{
 			margin-top:28px;
 			background:var(--panel);
 			border-radius:12px;
-			padding:36px;
+			padding:28px;
 			box-shadow: var(--card-shadow);
 			display:flex;
 			flex-direction:column;
 			gap:16px;
 			align-items:flex-start;
 		}
-		.hero-top{
-			display:flex;
-			align-items:center;
-			justify-content:space-between;
-			width:100%;
-			gap:24px;
-		}
-		.hero h1{margin:0;font-size:2.2rem;letter-spacing:0.6px}
-		.hero p.lead{margin:0;color:var(--muted);font-size:1.05rem}
-		.btn{
-			background: linear-gradient(90deg,var(--accent-blue),var(--accent-orange));
-			color:#061219;
-			border:none;
-			padding:12px 18px;
-			border-radius:10px;
-			font-weight:700;
-			cursor:pointer;
-			text-decoration:none;
-			box-shadow: 0 6px 18px rgba(1,12,22,0.6);
-		}
+
 		.grid{
 			display:grid;
 			grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
 			gap:16px;
-			margin-top:20px;
+			margin-top:12px;
 			width:100%;
 		}
 		.card{
@@ -112,8 +92,16 @@
 			padding:18px;
 			border-radius:10px;
 			border:1px solid rgba(255,255,255,0.02);
+			display:flex;
+			flex-direction:column;
+			align-items:center;
+			text-align:center;
 		}
-		h3{margin:0 0 8px 0;font-size:1.05rem}
+		.avatar{width:96px;height:96px;border-radius:10px;object-fit:cover;box-shadow:0 8px 20px rgba(2,6,23,0.6)}
+		.name{margin-top:12px;font-weight:700}
+		.username{color:var(--muted);font-size:0.9rem;margin-top:6px}
+		h1{margin:0;font-size:1.6rem}
+		.role-small{color:var(--muted);font-size:0.9rem;margin-top:10px}
 		.footer{
 			margin-top:28px;
 			color:var(--muted);
@@ -121,11 +109,7 @@
 			text-align:center;
 			padding:18px 0;
 		}
-		@media (max-width:720px){
-			.hero h1{font-size:1.6rem}
-			.flag{width:46px;height:26px}
-			.container{padding:16px;margin:16px;}
-		}
+		@media (max-width:720px){ .flag{width:46px;height:26px} .avatar{width:80px;height:80px} }
 	</style>
 </head>
 <body>
@@ -137,43 +121,57 @@
 				</div>
 				<div class="title" role="banner">
 					<div class="name">Francodie</div>
-					<div class="full">République de Francodie</div>
+					<div class="full">République de Francodie — Staff</div>
 				</div>
 			</div>
 			<nav aria-label="Navigation principale">
 				<a href="index.html">Accueil</a>
 				<a href="staff.html">Staff</a>
-				<a class="btn" href="https://discord.francodie.com/" target="_blank" rel="noopener">Rejoindre</a>
+				<a class="btn" href="https://discord.francodie.com/" target="_blank" rel="noopener" style="background:linear-gradient(90deg,var(--accent-blue),var(--accent-orange));color:#061219;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:700">Rejoindre</a>
 			</nav>
 		</header>
 
-		<section class="hero" aria-labelledby="hero-title">
-			<div class="hero-top">
-				<div style="display:flex;align-items:center;gap:20px">
-					<div>
-						<h1 id="hero-title">Francodie</h1>
-						<p class="lead">« Liberté, convivialité, solidarité » — serveur francophone communautaire</p>
-					</div>
-				</div>
-				<div>
-					<a class="btn" href="https://discord.francodie.com/" target="_blank" rel="noopener">Rejoindre le serveur</a>
-				</div>
-			</div>
+		<section class="hero" aria-labelledby="staff-title">
+			<h1 id="staff-title">Équipe</h1>
+			<p class="role-small">Président · Vice‑président · Ministres</p>
 
-			<div class="grid" role="region" aria-label="Informations">
-				<article class="card" id="about">
-					<h3>À propos</h3>
-					<p class="muted" style="color:var(--muted);margin-top:8px">Un serveur actif, accueillant et chaleureux où on parle beaucoup et on utilise régulièrement les salons vocaux.</p>
+			<div class="grid" role="list">
+				<!-- Président -->
+				<article class="card" role="listitem" aria-label="Président">
+					<img class="avatar" src="cdn/users/president.png" alt="Photo du président">
+					<div class="name">PrénomPseudo</div>
+					<div class="username">@president</div>
+					<div class="role-small">Président</div>
 				</article>
 
-				<article class="card" id="passions">
-					<h3>Nos passions</h3>
-					<p class="muted" style="color:var(--muted);margin-top:8px">Nous partageons une passion commune pour la grande distribution, l'audiovisuel (télévision et radio) et Minecraft, avec deux maps collaboratives à explorer en communauté.</p>
+				<!-- Vice‑président -->
+				<article class="card" role="listitem" aria-label="Vice-président">
+					<img class="avatar" src="cdn/users/vice.png" alt="Photo du vice-président">
+					<div class="name">VicePrenom</div>
+					<div class="username">@vice</div>
+					<div class="role-small">Vice‑président</div>
 				</article>
 
-				<article class="card" id="projects">
-					<h3>Projets</h3>
-					<p class="muted" style="color:var(--muted);margin-top:8px">Nous avons créé un univers fictif riche avec pays et groupes, dotés d'enseignes commerciales, chaînes de télévision, radios, médias et journaux.</p>
+				<!-- Ministres (3) -->
+				<article class="card" role="listitem" aria-label="Ministre 1">
+					<img class="avatar" src="cdn/users/ministre1.png" alt="Photo du ministre 1">
+					<div class="name">MinistreUn</div>
+					<div class="username">@min1</div>
+					<div class="role-small">Ministre</div>
+				</article>
+
+				<article class="card" role="listitem" aria-label="Ministre 2">
+					<img class="avatar" src="cdn/users/ministre2.png" alt="Photo du ministre 2">
+					<div class="name">MinistreDeux</div>
+					<div class="username">@min2</div>
+					<div class="role-small">Ministre</div>
+				</article>
+
+				<article class="card" role="listitem" aria-label="Ministre 3">
+					<img class="avatar" src="cdn/users/ministre3.png" alt="Photo du ministre 3">
+					<div class="name">MinistreTrois</div>
+					<div class="username">@min3</div>
+					<div class="role-small">Ministre</div>
 				</article>
 			</div>
 		</section>

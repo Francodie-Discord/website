@@ -136,13 +136,18 @@
 		@media (max-width:720px){ .flag{width:46px;height:26px} .avatar{width:80px;height:80px} }
 
 		/* page transitions: fade + subtle slide */
-		.container{
-			transition:transform 420ms cubic-bezier(.2,.9,.2,1), opacity 420ms cubic-bezier(.2,.9,.2,1);
-			transform:translateY(0);
-			opacity:1;
+		/* overlay fade transitions */
+		.page-overlay{position:fixed;inset:0;background:#061219;transition:opacity 420ms ease,visibility 420ms ease;z-index:9999;opacity:1;visibility:visible}
+		.page-overlay.hidden{opacity:0;visibility:hidden}
+
+		/* responsive tweaks */
+		.container{transition:opacity 220ms ease}
+		@media (max-width:720px){ .flag{width:46px;height:26px} .avatar{width:80px;height:80px} }
+		@media (max-width:520px){
+			nav{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+			nav a{margin-left:8px;font-size:0.95rem}
+			.role-grid{grid-template-columns:1fr}
 		}
-		/* exit state when navigating away */
-		.is-exiting .container{transform:translateY(-12px);opacity:0}
 	</style>
 </head>
 
@@ -229,5 +234,6 @@
 		</footer>
 	</div>
 	<script src="script.js"></script>
-	</body>
-	</html>
+	<body>
+		<div id="page-overlay" class="page-overlay"></div>
+		<div class="container">

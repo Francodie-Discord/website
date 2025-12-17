@@ -1,46 +1,50 @@
-// Page transition script: fade overlay on load and when navigating between internal pages
+// Page transition script: overlay fade in/out for navigation
 (function(){
-    const DURATION = 420; // must match CSS transition duration in pages
-    const root = document.documentElement;
+    const DURATION = 420; // matches CSS transition
+    const overlay = document.getElementById('page-overlay');
 
-    // On initial load, reveal page by adding .is-ready
-    function runReady(){
-        // ensure a tick so transition can run
-        requestAnimationFrame(()=> root.classList.add('is-ready'));
+    function hideOverlay(){
+        if(!overlay) return;
+        // ensure class removed after a tick so CSS transition runs
+        requestAnimationFrame(()=> overlay.classList.add('hidden'));
     }
+
+    function showOverlay(){
+        if(!overlay) return;
+        overlay.classList.remove('hidden');
+    }
+
+    // On load, hide overlay to reveal page
     if(document.readyState === 'loading'){
-        window.addEventListener('DOMContentLoaded', runReady);
+        window.addEventListener('DOMContentLoaded', hideOverlay);
     } else {
-        runReady();
+        // DOM already ready
+        hideOverlay();
     }
 
-    // Intercept clicks to animate out for internal navigation
+    // Intercept internal link clicks
     document.addEventListener('click', (e)=>{
         const a = e.target.closest('a');
         if(!a) return;
         const href = a.getAttribute('href');
         if(!href) return;
 
-        // Skip external, mailto, tel, anchors and blank targets
-        if(href.startsWith('http') && !href.startsWith(window.location.origin)) return;
+        // ignore external links, mailto, tel, targets _blank and anchors
+        if(href.startsWith('http') && !href.startsWith(location.origin)) return;
         if(href.startsWith('mailto:') || href.startsWith('tel:')) return;
         if(a.target && a.target.toLowerCase()==='_blank') return;
         if(href.startsWith('#')) return;
 
-        // Internal navigation: animate out then navigate
+        // internal navigation: show overlay then navigate
         e.preventDefault();
-        root.classList.remove('is-ready');
-        root.classList.add('is-exiting');
-
-        setTimeout(()=>{
-            window.location.href = href;
-        }, DURATION);
+        showOverlay();
+        setTimeout(()=> location.href = href, DURATION);
     });
 
-    // Ensure when using back/forward, page shows ready state
+    // On pageshow (back/forward), hide overlay
     window.addEventListener('pageshow', (ev)=>{
-        // remove exiting if present
-        root.classList.remove('is-exiting');
-        runReady();
+        if(ev.persisted && overlay){
+            hideOverlay();
+        }
     });
 })();

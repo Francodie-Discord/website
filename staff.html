@@ -64,6 +64,7 @@
 		.title{
 			display:flex;
 			flex-direction:column;
+			justify-content:center;
 		}
 		.title .name{font-weight:800;font-size:1.05rem;letter-spacing:0.2px}
 		.title .full{font-weight:600;color:var(--muted);font-size:0.82rem}
@@ -134,15 +135,18 @@
 		.role-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
 		@media (max-width:720px){ .flag{width:46px;height:26px} .avatar{width:80px;height:80px} }
 
-		/* page transition overlay */
-		.page-overlay{position:fixed;inset:0;background:#061219;pointer-events:none;opacity:1;transition:opacity 420ms cubic-bezier(.2,.9,.2,1);z-index:9999}
-		.page-overlay.hidden{opacity:0;pointer-events:none}
-		.page-overlay.visible{opacity:1;pointer-events:auto}
+		/* page transitions: subtle vertical motion + fade */
+		.container{
+			transition:transform 420ms cubic-bezier(.2,.9,.2,1), opacity 420ms cubic-bezier(.2,.9,.2,1);
+			transform:translateY(0);
+			opacity:1;
+		}
+		.is-entering .container{transform:translateY(8px);opacity:0}
+		.is-exiting .container{transform:translateY(-12px);opacity:0}
 	</style>
 </head>
 
 <body>
-	<div id="page-overlay" class="page-overlay"></div>
 	<div class="container">
 		<header>
 			<div class="brand">

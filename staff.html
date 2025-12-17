@@ -18,6 +18,8 @@
 			--glass: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
 			--card-shadow: 0 8px 24px rgba(2,6,23,0.6);
 		}
+		.nav-center{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;pointer-events:none}
+		.page-title{pointer-events:auto;font-weight:800;font-size:1.05rem;letter-spacing:0.2px;color:inherit}
 		html,body{height:100%;}
 		body{
 			margin:0;
@@ -44,6 +46,7 @@
 			align-items:center;
 			justify-content:space-between;
 			gap:16px;
+			position:relative;
 		}
 		.brand{
 			display:flex;
@@ -70,6 +73,18 @@
 			margin-left:18px;
 			font-weight:600;
 			font-size:0.95rem;
+		}
+		/* bouton réutilisé depuis index.html */
+		.btn{
+			background: linear-gradient(90deg,var(--accent-blue),var(--accent-orange));
+			color:#061219;
+			border:none;
+			padding:12px 18px;
+			border-radius:10px;
+			font-weight:700;
+			cursor:pointer;
+			text-decoration:none;
+			box-shadow: 0 6px 18px rgba(1,12,22,0.6);
 		}
 
 		.hero{
@@ -118,9 +133,16 @@
 		.role-group h2{margin:0 0 8px 0;font-size:1.05rem;color:#e6eef6}
 		.role-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
 		@media (max-width:720px){ .flag{width:46px;height:26px} .avatar{width:80px;height:80px} }
+
+		/* page transition overlay */
+		.page-overlay{position:fixed;inset:0;background:#061219;pointer-events:none;opacity:1;transition:opacity 420ms cubic-bezier(.2,.9,.2,1);z-index:9999}
+		.page-overlay.hidden{opacity:0;pointer-events:none}
+		.page-overlay.visible{opacity:1;pointer-events:auto}
 	</style>
 </head>
+
 <body>
+	<div id="page-overlay" class="page-overlay"></div>
 	<div class="container">
 		<header>
 			<div class="brand">
@@ -129,13 +151,16 @@
 				</div>
 				<div class="title" role="banner">
 					<div class="name">Francodie</div>
-					<div class="full">République de Francodie — Staff</div>
+					<div class="full">République de Francodie</div>
 				</div>
+			</div>
+			<div class="nav-center" aria-hidden="true">
+				<div class="page-title">Staff</div>
 			</div>
 			<nav aria-label="Navigation principale">
 				<a href="index.html">Accueil</a>
 				<a href="staff.html">Staff</a>
-				<a class="btn" href="https://discord.francodie.com/" target="_blank" rel="noopener" style="background:linear-gradient(90deg,var(--accent-blue),var(--accent-orange));color:#061219;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:700">Rejoindre</a>
+				<a class="btn" href="https://discord.francodie.com/" target="_blank" rel="noopener">Rejoindre</a>
 			</nav>
 		</header>
 
@@ -199,5 +224,6 @@
 			<span>République de Francodie — « Liberté, convivialité, solidarité »</span>
 		</footer>
 	</div>
-</body>
-</html>
+	<script src="script.js"></script>
+	</body>
+	</html>

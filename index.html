@@ -130,9 +130,15 @@
 			.flag{width:46px;height:26px}
 			.container{padding:16px;margin:16px;}
 		}
+
+		/* page transition overlay */
+		.page-overlay{position:fixed;inset:0;background:#061219;pointer-events:none;opacity:1;transition:opacity 420ms cubic-bezier(.2,.9,.2,1);z-index:9999}
+		.page-overlay.hidden{opacity:0;pointer-events:none}
+		.page-overlay.visible{opacity:1;pointer-events:auto}
 	</style>
 </head>
 <body>
+    <div id="page-overlay" class="page-overlay"></div>
 	<div class="container">
 		<header>
 			<div class="brand">
@@ -186,5 +192,6 @@
 			<span>République de Francodie — « Liberté, convivialité, solidarité »</span>
 		</footer>
 	</div>
+	<script src="script.js"></script>
 </body>
 </html>

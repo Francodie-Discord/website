@@ -3,16 +3,15 @@
     const DURATION = 420; // must match CSS transition duration in pages
     const root = document.documentElement;
 
-    // On initial load, mark entering then remove to animate in
-    function runEnter(){
-        root.classList.add('is-entering');
-        requestAnimationFrame(()=> root.classList.remove('is-entering'));
+    // On initial load, reveal page by adding .is-ready
+    function runReady(){
+        // ensure a tick so transition can run
+        requestAnimationFrame(()=> root.classList.add('is-ready'));
     }
     if(document.readyState === 'loading'){
-        window.addEventListener('DOMContentLoaded', runEnter);
+        window.addEventListener('DOMContentLoaded', runReady);
     } else {
-        // DOM already parsed (script included at end) — run immediately
-        runEnter();
+        runReady();
     }
 
     // Intercept clicks to animate out for internal navigation
@@ -28,8 +27,9 @@
         if(a.target && a.target.toLowerCase()==='_blank') return;
         if(href.startsWith('#')) return;
 
-        // Internal navigation: animate then navigate
+        // Internal navigation: animate out then navigate
         e.preventDefault();
+        root.classList.remove('is-ready');
         root.classList.add('is-exiting');
 
         setTimeout(()=>{
@@ -37,13 +37,10 @@
         }, DURATION);
     });
 
-    // When navigating via back/forward, ensure enter animation runs
+    // Ensure when using back/forward, page shows ready state
     window.addEventListener('pageshow', (ev)=>{
-        if(ev.persisted){
-            // Force reflow then animate in
-            root.classList.remove('is-exiting');
-            root.classList.add('is-entering');
-            requestAnimationFrame(()=> root.classList.remove('is-entering'));
-        }
+        // remove exiting if present
+        root.classList.remove('is-exiting');
+        runReady();
     });
 })();

@@ -47,4 +47,33 @@
             hideOverlay();
         }
     });
+
+    /* Mobile menu toggle */
+    const hamburger = document.getElementById('hamburger');
+    const mobileOverlay = document.getElementById('mobile-overlay');
+    function openMobile(){
+        document.documentElement.classList.add('mobile-open');
+        // focus first link
+        const m = document.getElementById('mobile-menu');
+        if(m) m.setAttribute('aria-hidden','false');
+    }
+    function closeMobile(){
+        document.documentElement.classList.remove('mobile-open');
+        const m = document.getElementById('mobile-menu');
+        if(m) m.setAttribute('aria-hidden','true');
+    }
+    if(hamburger){
+        hamburger.addEventListener('click', ()=>{
+            const isOpen = document.documentElement.classList.contains('mobile-open');
+            if(isOpen) closeMobile(); else openMobile();
+        });
+    }
+    if(mobileOverlay){
+        mobileOverlay.addEventListener('click', closeMobile);
+    }
+    // close mobile menu when clicking a mobile link
+    document.addEventListener('click', (e)=>{
+        const a = e.target.closest('#mobile-menu a');
+        if(a) closeMobile();
+    });
 })();

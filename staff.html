@@ -75,6 +75,12 @@
 			font-weight:600;
 			font-size:0.95rem;
 		}
+		/* hamburger for small screens */
+		.hamburger{display:none;border:0;background:transparent;color:var(--muted);font-size:22px;cursor:pointer}
+		.mobile-menu{position:fixed;left:0;top:0;height:100%;width:260px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));box-shadow:2px 0 24px rgba(0,0,0,0.6);transform:translateX(-100%);transition:transform 320ms ease;z-index:10001;padding:20px}
+		.mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);opacity:0;visibility:hidden;transition:opacity 240ms ease,visibility 240ms ease;z-index:10000}
+		document.documentElement.mobile-open .mobile-menu{transform:translateX(0)}
+		document.documentElement.mobile-open .mobile-overlay{opacity:1;visibility:visible}
 		/* bouton réutilisé depuis index.html */
 		.btn{
 			background: linear-gradient(90deg,var(--accent-blue),var(--accent-orange));
@@ -133,7 +139,7 @@
 		.role-group{width:100%;margin-top:18px}
 		.role-group h2{margin:0 0 8px 0;font-size:1.05rem;color:#e6eef6}
 		.role-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-		@media (max-width:720px){ .flag{width:46px;height:26px} .avatar{width:80px;height:80px} }
+		@media (max-width:720px){ .flag{width:46px;height:26px} .avatar{width:80px;height:80px} nav{display:none} .hamburger{display:inline-flex} }
 
 		/* page transitions: fade + subtle slide */
 		/* overlay fade transitions */
@@ -166,12 +172,21 @@
 			<div class="nav-center" aria-hidden="true">
 				<div class="page-title">Staff</div>
 			</div>
+			<button class="hamburger" id="hamburger" aria-label="Ouvrir le menu">☰</button>
 			<nav aria-label="Navigation principale">
 				<a href="index.html">Accueil</a>
 				<a href="staff.html">Staff</a>
 				<a class="btn" href="https://discord.francodie.com/" target="_blank" rel="noopener">Rejoindre</a>
 			</nav>
 		</header>
+		<div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+			<nav aria-label="Navigation mobile">
+				<a href="index.html">Accueil</a>
+				<a href="staff.html">Staff</a>
+				<a class="btn" href="https://discord.francodie.com/" target="_blank" rel="noopener">Rejoindre</a>
+			</nav>
+		</div>
+		<div id="mobile-overlay" class="mobile-overlay" tabindex="-1" aria-hidden="true"></div>
 
 		<section class="hero" aria-labelledby="staff-title">
 			<h1 id="staff-title">Équipe</h1>
@@ -234,6 +249,5 @@
 		</footer>
 	</div>
 	<script src="script.js"></script>
-	<body>
-		<div id="page-overlay" class="page-overlay"></div>
-		<div class="container">
+</body>
+</html>

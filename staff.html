@@ -109,6 +109,10 @@
 			text-align:center;
 			padding:18px 0;
 		}
+		/* nouveaux styles pour structure par rôle */
+		.role-group{width:100%;margin-top:18px}
+		.role-group h2{margin:0 0 8px 0;font-size:1.05rem;color:#e6eef6}
+		.role-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
 		@media (max-width:720px){ .flag{width:46px;height:26px} .avatar{width:80px;height:80px} }
 	</style>
 </head>
@@ -135,44 +139,55 @@
 			<h1 id="staff-title">Équipe</h1>
 			<p class="role-small">Président · Premier ministre · Ministres</p>
 
-			<div class="grid" role="list">
-				<!-- Président -->
-				<article class="card" role="listitem" aria-label="Président">
-					<img class="avatar" src="cdn/users/president.png" alt="Photo du président">
-					<div class="name">PrénomPseudo</div>
-					<div class="username">@president</div>
-					<div class="role-small">Président</div>
-				</article>
+			<!-- Structure par rôle -->
+			<div class="role-group" id="president">
+				<h2>Président</h2>
+				<div class="role-grid" role="list">
+					<article class="card" role="listitem" aria-label="Président">
+						<img class="avatar" src="cdn/users/president.png" alt="Photo du président">
+						<div class="name">PrénomPseudo</div>
+						<div class="username">@president</div>
+						<div class="role-small">Président</div>
+					</article>
+				</div>
+			</div>
 
-				<!-- Premier ministre (remplace Vice‑président) -->
-				<article class="card" role="listitem" aria-label="Premier ministre">
-					<img class="avatar" src="cdn/users/premier.png" alt="Photo du premier ministre">
-					<div class="name">PremierPrenom</div>
-					<div class="username">@premier</div>
-					<div class="role-small">Premier ministre</div>
-				</article>
+			<div class="role-group" id="premier">
+				<h2>Premier ministre</h2>
+				<div class="role-grid" role="list">
+					<article class="card" role="listitem" aria-label="Premier ministre">
+						<img class="avatar" src="cdn/users/premier.png" alt="Photo du premier ministre">
+						<div class="name">PremierPrenom</div>
+						<div class="username">@premier</div>
+						<div class="role-small">Premier ministre</div>
+					</article>
+				</div>
+			</div>
 
-				<!-- Ministres (3) -->
-				<article class="card" role="listitem" aria-label="Ministre 1">
-					<img class="avatar" src="cdn/users/ministre1.png" alt="Photo du ministre 1">
-					<div class="name">MinistreUn</div>
-					<div class="username">@min1</div>
-					<div class="role-small">Ministre</div>
-				</article>
+			<div class="role-group" id="ministers">
+				<h2>Ministres</h2>
+				<div class="role-grid" role="list">
+					<article class="card" role="listitem" aria-label="Ministre 1">
+						<img class="avatar" src="cdn/users/ministre1.png" alt="Photo du ministre 1">
+						<div class="name">MinistreUn</div>
+						<div class="username">@min1</div>
+						<div class="role-small">Ministre</div>
+					</article>
 
-				<article class="card" role="listitem" aria-label="Ministre 2">
-					<img class="avatar" src="cdn/users/ministre2.png" alt="Photo du ministre 2">
-					<div class="name">MinistreDeux</div>
-					<div class="username">@min2</div>
-					<div class="role-small">Ministre</div>
-				</article>
+					<article class="card" role="listitem" aria-label="Ministre 2">
+						<img class="avatar" src="cdn/users/ministre2.png" alt="Photo du ministre 2">
+						<div class="name">MinistreDeux</div>
+						<div class="username">@min2</div>
+						<div class="role-small">Ministre</div>
+					</article>
 
-				<article class="card" role="listitem" aria-label="Ministre 3">
-					<img class="avatar" src="cdn/users/ministre3.png" alt="Photo du ministre 3">
-					<div class="name">MinistreTrois</div>
-					<div class="username">@min3</div>
-					<div class="role-small">Ministre</div>
-				</article>
+					<article class="card" role="listitem" aria-label="Ministre 3">
+						<img class="avatar" src="cdn/users/ministre3.png" alt="Photo du ministre 3">
+						<div class="name">MinistreTrois</div>
+						<div class="username">@min3</div>
+						<div class="role-small">Ministre</div>
+					</article>
+				</div>
 			</div>
 		</section>
 

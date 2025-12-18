@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Francodie - Accueil</title>
+    <title>Francodie - Staff</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -115,64 +115,100 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 8rem 2rem 6rem;
+            padding: 6rem 2rem 4rem;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: 700;
             letter-spacing: -0.03em;
             background: linear-gradient(135deg, #00BBFF, #FF8000);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .hero .subtitle {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: rgba(255, 255, 255, 0.4);
             font-weight: 300;
-            letter-spacing: 0.02em;
         }
 
-        /* Sections Container */
-        .sections-container {
-            max-width: 1200px;
+        /* Staff Container */
+        .staff-container {
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 2rem 6rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
         }
 
-        .section-card {
+        .staff-section {
+            margin-bottom: 5rem;
+        }
+
+        .staff-section h2 {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+        }
+
+        .staff-card {
             background: rgba(255, 255, 255, 0.02);
-            padding: 2.5rem 2rem;
+            padding: 2rem;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
             transition: all 0.3s;
+            width: 100%;
+            max-width: 220px;
         }
 
-        .section-card:hover {
+        .staff-card:hover {
             background: rgba(255, 255, 255, 0.04);
             border-color: rgba(0, 187, 255, 0.3);
             transform: translateY(-2px);
         }
 
-        .section-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #fff;
+        .staff-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            border: 2px solid rgba(0, 187, 255, 0.3);
+            object-fit: cover;
+            display: block;
+        }
+
+        .staff-name {
+            font-size: 1.1rem;
             font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.3rem;
             letter-spacing: -0.01em;
         }
 
-        .section-card p {
-            line-height: 1.7;
+        .staff-role {
             color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .staff-username {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.3);
             font-weight: 300;
-            font-size: 0.95rem;
         }
 
         /* Footer */
@@ -190,10 +226,6 @@
 
         /* Responsive */
         @media (max-width: 968px) {
-            .sections-container {
-                grid-template-columns: 1fr;
-            }
-
             nav {
                 flex-direction: column;
                 gap: 1rem;
@@ -201,7 +233,11 @@
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+            }
+
+            .staff-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             }
         }
     </style>
@@ -217,36 +253,68 @@
             </div>
         </div>
         <div class="nav-center">
-            <h2>Accueil</h2>
+            <h2>Staff</h2>
         </div>
         <div class="nav-right">
-            <a href="index.html" class="nav-btn active">Accueil</a>
-            <a href="staff.html" class="nav-btn">Staff</a>
+            <a href="index.html" class="nav-btn">Accueil</a>
+            <a href="staff.html" class="nav-btn active">Staff</a>
             <a href="https://discord.francodie.com/" class="join-btn" target="_blank">Rejoindre</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <div class="hero">
-        <h1>Bienvenue en Francodie</h1>
-        <p class="subtitle">Liberté, convivialité, solidarité</p>
+        <h1>Notre Équipe</h1>
+        <p class="subtitle">Les membres qui font vivre la Francodie</p>
     </div>
 
-    <!-- Main Sections -->
-    <div class="sections-container">
-        <div class="section-card">
-            <h3>À propos</h3>
-            <p>La Francodie est un serveur Discord communautaire et un pays fictif. C'est un serveur actif, accueillant et chaleureux où on parle beaucoup et on utilise régulièrement les salons vocaux.</p>
+    <!-- Staff Container -->
+    <div class="staff-container">
+        <!-- Direction -->
+        <div class="staff-section">
+            <h2>Direction</h2>
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <img src="cdn/staff/cube.png" alt="Cube" class="staff-avatar">
+                    <div class="staff-name">Cube</div>
+                    <div class="staff-role">Président</div>
+                    <div class="staff-username">@cube76lh</div>
+                </div>
+
+                <div class="staff-card">
+                    <img src="cdn/staff/breizh.png" alt="Créa'BREIZH" class="staff-avatar">
+                    <div class="staff-name">Créa'BREIZH</div>
+                    <div class="staff-role">Vice-président</div>
+                    <div class="staff-username">@creabreizh</div>
+                </div>
+            </div>
         </div>
 
-        <div class="section-card">
-            <h3>Nos passions</h3>
-            <p>Nous partageons une passion commune pour la grande distribution, l'audiovisuel (télévision et radio) et Minecraft, avec deux maps collaboratives à explorer en communauté.</p>
-        </div>
+        <!-- Ministres -->
+        <div class="staff-section">
+            <h2>Ministres</h2>
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <img src="cdn/staff/nathan.png" alt="NathxnAzuur" class="staff-avatar">
+                    <div class="staff-name">NathxnAzuur</div>
+                    <div class="staff-role">Ministre</div>
+                    <div class="staff-username">@nathxnazuur</div>
+                </div>
 
-        <div class="section-card">
-            <h3>Nos projets</h3>
-            <p>Nous avons créé un univers fictif riche avec pays et groupes, dotés d'enseignes commerciales, chaînes de télévision, radios, médias et journaux.</p>
+                <div class="staff-card">
+                    <img src="cdn/staff/corian.png" alt="Corian" class="staff-avatar">
+                    <div class="staff-name">Corian</div>
+                    <div class="staff-role">Ministre</div>
+                    <div class="staff-username">@corian62</div>
+                </div>
+
+                <div class="staff-card">
+                    <img src="cdn/staff/ryan.png" alt="RC'" class="staff-avatar">
+                    <div class="staff-name">RC'</div>
+                    <div class="staff-role">Ministre</div>
+                    <div class="staff-username">@rca37</div>
+                </div>
+            </div>
         </div>
     </div>
 

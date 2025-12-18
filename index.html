@@ -252,7 +252,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 République de Francodie</p>
+        <p>&copy; <span id="year"></span> République de Francodie</p>
     </footer>
 
     <script>
@@ -264,6 +264,8 @@
                 btn.classList.remove('active');
             }
         });
+        
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>

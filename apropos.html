@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Francodie - Staff</title>
+    <title>Francodie - À propos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -135,80 +135,101 @@
             font-weight: 300;
         }
 
-        /* Staff Container */
-        .staff-container {
-            max-width: 1100px;
+        /* About Container */
+        .about-container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem 6rem;
         }
 
-        .staff-section {
-            margin-bottom: 5rem;
-        }
-
-        .staff-section h2 {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 2rem;
-            text-align: center;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        .staff-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            justify-items: center;
-        }
-
-        .staff-card {
+        /* Section Card */
+        .section-card {
             background: rgba(255, 255, 255, 0.02);
-            padding: 2rem;
-            border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
             transition: all 0.3s;
-            width: 100%;
-            max-width: 220px;
         }
 
-        .staff-card:hover {
+        .section-card:hover {
             background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(0, 187, 255, 0.3);
-            transform: translateY(-2px);
+            border-color: rgba(0, 187, 255, 0.2);
         }
 
-        .staff-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            border: 2px solid rgba(0, 187, 255, 0.3);
-            object-fit: cover;
-            display: block;
+        /* Alternate layout */
+        .section-card.reverse {
+            direction: rtl;
         }
 
-        .staff-name {
-            font-size: 1.1rem;
+        .section-card.reverse > * {
+            direction: ltr;
+        }
+
+        .section-content h2 {
+            font-size: 1.8rem;
             font-weight: 600;
             color: #fff;
-            margin-bottom: 0.3rem;
-            letter-spacing: -0.01em;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
         }
 
-        .staff-role {
+        .section-content p {
+            font-size: 1rem;
+            line-height: 1.8;
             color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            font-weight: 400;
+            font-weight: 300;
         }
 
-        .staff-username {
-            font-size: 0.8rem;
+        .section-image {
+            width: 100%;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: rgba(255, 255, 255, 0.3);
-            font-weight: 300;
+            font-size: 0.9rem;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Full Image Card */
+        .full-image-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .full-image-card:hover {
+            border-color: rgba(0, 187, 255, 0.2);
+        }
+
+        .full-image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .full-image-placeholder {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 1rem;
         }
 
         /* Footer */
@@ -236,8 +257,22 @@
                 font-size: 2.2rem;
             }
 
-            .staff-grid {
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            .section-card {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                gap: 2rem;
+            }
+
+            .section-card.reverse {
+                direction: ltr;
+            }
+
+            .section-image {
+                height: 250px;
+            }
+
+            .full-image-card {
+                height: 300px;
             }
         }
     </style>
@@ -253,102 +288,76 @@
             </div>
         </div>
         <div class="nav-center">
-            <h2>Staff</h2>
+            <h2>À propos</h2>
         </div>
         <div class="nav-right">
             <a href="index.html" class="nav-btn">Accueil</a>
-            <a href="staff.html" class="nav-btn active">Staff</a>
+            <a href="staff.html" class="nav-btn">Staff</a>
+            <a href="about.html" class="nav-btn active">À propos</a>
             <a href="https://discord.francodie.com/" class="join-btn" target="_blank">Rejoindre</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <div class="hero">
-        <h1>Notre Équipe</h1>
-        <p class="subtitle">Les membres qui font vivre la Francodie</p>
+        <h1>À propos de la Francodie</h1>
+        <p class="subtitle">Découvrez notre histoire et nos passions</p>
     </div>
 
-    <!-- Staff Container -->
-    <div class="staff-container">
-        <!-- Direction -->
-        <div class="staff-section">
-            <h2>Direction</h2>
-            <div class="staff-grid">
-                <div class="staff-card">
-                    <img src="cdn/staff/cube.png" alt="Cube" class="staff-avatar">
-                    <div class="staff-name">Cube</div>
-                    <div class="staff-role">Président</div>
-                    <div class="staff-username">@cube76lh</div>
-                </div>
-
-                <div class="staff-card">
-                    <img src="cdn/staff/breizh.png" alt="Créa'BREIZH" class="staff-avatar">
-                    <div class="staff-name">Créa'BREIZH</div>
-                    <div class="staff-role">Vice-président</div>
-                    <div class="staff-username">@creabreizh</div>
-                </div>
-                
-                <div class="staff-card">
-                    <img src="cdn/staff/nathan.png" alt="NathxnAzuur" class="staff-avatar">
-                    <div class="staff-name">NathxnAzuur</div>
-                    <div class="staff-role">Premier Ministre</div>
-                    <div class="staff-username">@nathxnazuur</div>
-                </div>
+    <!-- About Container -->
+    <div class="about-container">
+        <!-- Le commencement -->
+        <div class="section-card">
+            <div class="section-content">
+                <h2>Le commencement</h2>
+                <p>[Votre texte ici - Racontez les débuts de la Francodie, comment le serveur a été créé, les premières idées et les premiers membres...]</p>
+            </div>
+            <div class="section-image">
+                <img src="cdn/about/commencement.png" alt="Le commencement" style="display: none;">
+                <span class="full-image-placeholder">Image : Le commencement</span>
             </div>
         </div>
 
-        <!-- Ministres -->
-        <div class="staff-section">
-            <h2>Ministres</h2>
-            <div class="staff-grid">
-                <div class="staff-card">
-                    <img src="cdn/staff/arthur.png" alt="ArthWare" class="staff-avatar">
-                    <div class="staff-name">ArthWare</div>
-                    <div class="staff-role">Ministre</div>
-                    <div class="staff-username">@arthware</div>
-                </div>
-
-                <div class="staff-card">
-                    <img src="cdn/staff/corian.png" alt="Corian" class="staff-avatar">
-                    <div class="staff-name">Corian</div>
-                    <div class="staff-role">Ministre</div>
-                    <div class="staff-username">@corian62</div>
-                </div>
-
-                <div class="staff-card">
-                    <img src="cdn/staff/ryan.png" alt="RC'" class="staff-avatar">
-                    <div class="staff-name">RC'</div>
-                    <div class="staff-role">Ministre</div>
-                    <div class="staff-username">@rca37</div>
-                </div>
+        <!-- La grande distribution -->
+        <div class="section-card reverse">
+            <div class="section-content">
+                <h2>La grande distribution</h2>
+                <p>[Votre texte ici - Parlez de votre passion pour la grande distribution, les enseignes créées, les projets commerciaux dans votre univers fictif...]</p>
+            </div>
+            <div class="section-image">
+                <img src="cdn/about/distribution.png" alt="La grande distribution" style="display: none;">
+                <span class="full-image-placeholder">Image : Grande distribution</span>
             </div>
         </div>
 
-        <!-- Députés -->
-        <div class="staff-section">
-            <h2>Députés</h2>
-            <div class="staff-grid">
-                <div class="staff-card">
-                    <img src="cdn/staff/adam.png" alt="Adam68" class="staff-avatar">
-                    <div class="staff-name">Adam68</div>
-                    <div class="staff-role">Député</div>
-                    <div class="staff-username">@adam68etsestc</div>
-                </div>
-
-                <div class="staff-card">
-                    <img src="cdn/staff/mathys.png" alt="Mathys" class="staff-avatar">
-                    <div class="staff-name">Mathys</div>
-                    <div class="staff-role">Député</div>
-                    <div class="staff-username">@mrjavel59</div>
-                </div>
-
-                <div class="staff-card">
-                    <img src="cdn/staff/stone.png" alt="RealStone" class="staff-avatar">
-                    <div class="staff-name">RealStone</div>
-                    <div class="staff-role">Député</div>
-                    <div class="staff-username">@realstone67277</div>
-                </div>
+        <!-- L'audiovisuel -->
+        <div class="section-card">
+            <div class="section-content">
+                <h2>L'audiovisuel</h2>
+                <p>[Votre texte ici - Décrivez vos créations audiovisuelles, les chaînes de télévision, les radios, les médias que vous avez créés...]</p>
             </div>
+            <div class="section-image">
+                <img src="cdn/about/audiovisuel.png" alt="L'audiovisuel" style="display: none;">
+                <span class="full-image-placeholder">Image : Audiovisuel</span>
+            </div>
+        </div>
+
+        <!-- L'activité et les membres du serveur -->
+        <div class="section-card reverse">
+            <div class="section-content">
+                <h2>L'activité et les membres du serveur</h2>
+                <p>[Votre texte ici - Parlez de la communauté, de l'ambiance du serveur, des activités quotidiennes, des events, de l'esprit convivial...]</p>
+            </div>
+            <div class="section-image">
+                <img src="cdn/about/membres.png" alt="Les membres" style="display: none;">
+                <span class="full-image-placeholder">Image : Membres</span>
+            </div>
+        </div>
+
+        <!-- Full Image Card -->
+        <div class="full-image-card">
+            <img src="cdn/about/banner.png" alt="Bannière Francodie" style="display: none;">
+            <span class="full-image-placeholder">Image bannière complète</span>
         </div>
     </div>
 
@@ -365,6 +374,18 @@
             } else {
                 btn.classList.remove('active');
             }
+        });
+
+        // Show images if they exist
+        document.querySelectorAll('.section-image img, .full-image-card img').forEach(img => {
+            img.addEventListener('load', function() {
+                this.style.display = 'block';
+                const placeholder = this.nextElementSibling;
+                if (placeholder) placeholder.style.display = 'none';
+            });
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+            });
         });
         
         document.getElementById('year').textContent = new Date().getFullYear();

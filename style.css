@@ -101,12 +101,39 @@ nav a {
     border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.02);
 }
 
+/* L'overlay devient une simple nappe noire au-dessus pour l'entrée */
 .page-overlay {
-    position: fixed; inset: 0; background: #061219;
-    transition: opacity 420ms ease, visibility 420ms ease;
-    z-index: 9999; opacity: 1; visibility: visible;
+    position: fixed;
+    inset: 0;
+    background: #0b0f14; /* Couleur de ton fond */
+    z-index: 9999;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s ease;
+    pointer-events: none;
 }
-.page-overlay.hidden { opacity: 0; visibility: hidden; }
+
+/* Quand la page est prête, l'overlay disparaît en glissant */
+.page-overlay.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    visibility: hidden;
+}
+
+/* Animation de sortie pour le contenu de la page */
+.fade-out {
+    opacity: 0 !important;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Petit bonus : animation d'apparition douce pour le container */
+.container {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 .footer { margin-top: 28px; color: var(--muted); font-size: 0.9rem; text-align: center; padding: 18px 0; }
 

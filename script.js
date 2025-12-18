@@ -1,101 +1,51 @@
-(function() {
-    const DURATION = 420; // Durée de la transition CSS
+document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('page-overlay');
+    const container = document.querySelector('.container');
 
-    /**
-     * GESTION DE L'OVERLAY DE CHARGEMENT
-     */
-    function hideOverlay() {
-        const overlay = document.getElementById('page-overlay');
-        if (overlay) {
+    // 1. Entrée de page : On retire l'overlay proprement
+    if (overlay) {
+        // Un petit délai pour laisser le temps au navigateur de rendre le CSS
+        requestAnimationFrame(() => {
             overlay.classList.add('hidden');
-        }
-    }
-
-    function showOverlay() {
-        const overlay = document.getElementById('page-overlay');
-        if (overlay) {
-            overlay.classList.remove('hidden');
-        }
-    }
-
-    // Masquer l'overlay dès que la page est chargée
-    if (document.readyState === 'complete') {
-        hideOverlay();
-    } else {
-        window.addEventListener('load', hideOverlay);
-    }
-
-    // Sécurité : au cas où le chargement prendrait trop de temps (ex: image manquante)
-    // On force l'affichage après 1.5 seconde maximum
-    setTimeout(hideOverlay, 1500);
-
-    /**
-     * GESTION DES TRANSITIONS ENTRE PAGES
-     */
-    document.addEventListener('click', (e) => {
-        const a = e.target.closest('a');
-        
-        // On ignore si : pas de lien, lien externe, lien vers une ancre (#), ou target="_blank"
-        if (!a || !a.href) return;
-        if (a.target === '_blank') return;
-        if (a.href.includes('#')) return;
-        if (!a.href.startsWith(window.location.origin)) return;
-
-        // Si c'est un lien interne (index.html ou staff.html)
-        e.preventDefault();
-        const targetHref = a.href;
-        
-        showOverlay();
-
-        // On change de page après la durée de l'animation
-        setTimeout(() => {
-            window.location.href = targetHref;
-        }, DURATION);
-    });
-
-    /**
-     * GESTION DU MENU MOBILE
-     */
-    const hamburger = document.getElementById('hamburger');
-    const mobileOverlay = document.getElementById('mobile-overlay');
-    const htmlEl = document.documentElement;
-
-    function toggleMenu() {
-        htmlEl.classList.toggle('mobile-open');
-        const isOpen = htmlEl.classList.contains('mobile-open');
-        
-        const menu = document.getElementById('mobile-menu');
-        if (menu) {
-            menu.setAttribute('aria-hidden', !isOpen);
-        }
-    }
-
-    function closeMenu() {
-        htmlEl.classList.remove('mobile-open');
-    }
-
-    if (hamburger) {
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleMenu();
         });
     }
 
-    if (mobileOverlay) {
-        mobileOverlay.addEventListener('click', closeMenu);
-    }
-
-    // Fermer le menu si on clique sur un lien du menu mobile
+    // 2. Sortie de page : On gère les liens
     document.addEventListener('click', (e) => {
-        if (e.target.closest('#mobile-menu a')) {
-            closeMenu();
+        const link = e.target.closest('a');
+
+        // On ne gère que les liens internes qui ne s'ouvrent pas dans un nouvel onglet
+        if (
+            link && 
+            link.href.startsWith(window.location.origin) && 
+            !link.hash && 
+            link.target !== '_blank'
+        ) {
+            e.preventDefault();
+            const destination = link.href;
+
+            // On fait disparaître le contenu actuel
+            if (container) container.classList.add('fade-out');
+            
+            // On fait revenir l'overlay (optionnel, pour le style)
+            if (overlay) {
+                overlay.style.transform = "translateY(20px)";
+                overlay.classList.remove('hidden');
+            }
+
+            // Redirection après l'animation
+            setTimeout(() => {
+                window.location.href = destination;
+            }, 400);
         }
     });
 
-    // Gestion du bouton "Précédent" du navigateur
-    window.addEventListener('pageshow', (event) => {
-        if (event.persisted) {
-            hideOverlay();
-        }
-    });
-})();
+    // 3. Gestion Menu Mobile (Simple et efficace)
+    const hamburger = document.getElementById('hamburger');
+    const mobileOverlay = document.getElementById('mobile-overlay');
+
+    const toggleMenu = () => document.documentElement.classList.toggle('mobile-open');
+
+    if (hamburger) hamburger.addEventListener('click', toggleMenu);
+    if (mobileOverlay) mobileOverlay.addEventListener('click', toggleMenu);
+});

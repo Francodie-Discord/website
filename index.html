@@ -1,11 +1,156 @@
 <!doctype html>
 <html lang="fr">
 <head>
+<<<<<<< HEAD
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Francodie — République de Francodie</title>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+=======
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Francodie — République de Francodie</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600;800&display=swap" rel="stylesheet">
+	<style>
+		:root{
+			--bg:#0b0f14;
+			--panel: rgba(255,255,255,0.03);
+			--muted:#9aa4ae;
+			--accent-blue:#00BBFF;
+			--accent-red:#9C0000;
+			--accent-orange:#FF8000;
+			--glass: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+			--card-shadow: 0 8px 24px rgba(2,6,23,0.6);
+		}
+		html,body{height:100%;}
+		body{
+			margin:0;
+			font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+			background:
+				linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.2)),
+				var(--bg);
+			/* Empêche le fond de se répéter et le fixe pour couvrir tout l'écran */
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+			color:#e6eef6;
+			-webkit-font-smoothing:antialiased;
+			-moz-osx-font-smoothing:grayscale;
+			line-height:1.45;
+		}
+		.container{
+			max-width:1100px;
+			margin:32px auto;
+			padding:24px;
+		}
+		header{
+			display:flex;
+			align-items:center;
+			justify-content:space-between;
+			gap:16px;
+		}
+		.brand{
+			display:flex;
+			align-items:center;
+			gap:12px;
+		}
+		.flag{
+			width:56px;
+			height:32px;
+			display:flex;
+			border-radius:6px;
+			overflow:hidden;
+			box-shadow: var(--card-shadow);
+		}
+		.flag > i{flex:1}
+		.flag .b{background:var(--accent-blue)} .flag .r{background:var(--accent-red)} .flag .o{background:var(--accent-orange)}
+		.title{
+			display:flex;
+			flex-direction:column;
+			justify-content:center;
+		}
+		.title .name{font-weight:800;font-size:1.05rem;letter-spacing:0.2px}
+		.title .full{font-weight:600;color:var(--muted);font-size:0.82rem}
+		nav a{
+			color:var(--muted);
+			text-decoration:none;
+			margin-left:18px;
+			font-weight:600;
+			font-size:0.95rem;
+		}
+		.hero{
+			margin-top:28px;
+			background:var(--panel);
+			border-radius:12px;
+			padding:36px;
+			box-shadow: var(--card-shadow);
+			display:flex;
+			flex-direction:column;
+			gap:16px;
+			align-items:flex-start;
+		}
+		.hero-top{
+			display:flex;
+			align-items:center;
+			justify-content:space-between;
+			width:100%;
+			gap:24px;
+		}
+		.hero h1{margin:0;font-size:2.2rem;letter-spacing:0.6px}
+		.hero p.lead{margin:0;color:var(--muted);font-size:1.05rem}
+		.btn{
+			background: linear-gradient(90deg,var(--accent-blue),var(--accent-orange));
+			color:#061219;
+			border:none;
+			padding:12px 18px;
+			border-radius:10px;
+			font-weight:700;
+			cursor:pointer;
+			text-decoration:none;
+			box-shadow: 0 6px 18px rgba(1,12,22,0.6);
+		}
+		.grid{
+			display:grid;
+			grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+			gap:16px;
+			margin-top:20px;
+			width:100%;
+		}
+		.card{
+			background:var(--glass);
+			padding:18px;
+			border-radius:10px;
+			border:1px solid rgba(255,255,255,0.02);
+		}
+		h3{margin:0 0 8px 0;font-size:1.05rem}
+		.footer{
+			margin-top:28px;
+			color:var(--muted);
+			font-size:0.9rem;
+			text-align:center;
+			padding:18px 0;
+		}
+		@media (max-width:720px){
+			.hero h1{font-size:1.6rem}
+			.flag{width:46px;height:26px}
+			.container{padding:16px;margin:16px;}
+		}
+
+		/* page transitions: subtle vertical motion + fade */
+		.container{
+			transition:transform 420ms cubic-bezier(.2,.9,.2,1), opacity 420ms cubic-bezier(.2,.9,.2,1);
+			transform:translateY(0);
+			opacity:1;
+		}
+		/* initial entering state (before removal) */
+		.is-entering .container{transform:translateY(8px);opacity:0}
+		/* exit state when navigating away */
+		.is-exiting .container{transform:translateY(-12px);opacity:0}
+	</style>
+>>>>>>> parent of 6daca17 (edx)
 </head>
 <body>
     <div class="container">

@@ -71,11 +71,70 @@
             letter-spacing: 0.5px;
         }
 
+<<<<<<< HEAD
         @media (max-width: 720px) {
             .nav-center { display: none; }
             .role-grid { grid-template-columns: 1fr; }
         }
     </style>
+=======
+		.hero{
+			margin-top:28px;
+			background:var(--panel);
+			border-radius:12px;
+			padding:28px;
+			box-shadow: var(--card-shadow);
+			display:flex;
+			flex-direction:column;
+			gap:16px;
+			align-items:flex-start;
+		}
+
+		.grid{
+			display:grid;
+			grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+			gap:16px;
+			margin-top:12px;
+			width:100%;
+		}
+		.card{
+			background:var(--glass);
+			padding:18px;
+			border-radius:10px;
+			border:1px solid rgba(255,255,255,0.02);
+			display:flex;
+			flex-direction:column;
+			align-items:center;
+			text-align:center;
+		}
+		.avatar{width:96px;height:96px;border-radius:10px;object-fit:cover;box-shadow:0 8px 20px rgba(2,6,23,0.6)}
+		.name{margin-top:12px;font-weight:700}
+		.username{color:var(--muted);font-size:0.9rem;margin-top:6px}
+		h1{margin:0;font-size:1.6rem}
+		.role-small{color:var(--muted);font-size:0.9rem;margin-top:10px}
+		.footer{
+			margin-top:28px;
+			color:var(--muted);
+			font-size:0.9rem;
+			text-align:center;
+			padding:18px 0;
+		}
+		/* nouveaux styles pour structure par rôle */
+		.role-group{width:100%;margin-top:18px}
+		.role-group h2{margin:0 0 8px 0;font-size:1.05rem;color:#e6eef6}
+		.role-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+		@media (max-width:720px){ .flag{width:46px;height:26px} .avatar{width:80px;height:80px} }
+
+		/* page transitions: subtle vertical motion + fade */
+		.container{
+			transition:transform 420ms cubic-bezier(.2,.9,.2,1), opacity 420ms cubic-bezier(.2,.9,.2,1);
+			transform:translateY(0);
+			opacity:1;
+		}
+		.is-entering .container{transform:translateY(8px);opacity:0}
+		.is-exiting .container{transform:translateY(-12px);opacity:0}
+	</style>
+>>>>>>> parent of 6daca17 (edx)
 </head>
 <body>
     <div class="container">

@@ -5,9 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     const toggleMenu = () => htmlEl.classList.toggle('mobile-open');
     const closeMenu = () => htmlEl.classList.remove('mobile-open');
 =======
+=======
+>>>>>>> parent of 6daca17 (edx)
 =======
 >>>>>>> parent of 6daca17 (edx)
     // On initial load, mark entering then remove to animate in

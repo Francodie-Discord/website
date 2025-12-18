@@ -9,13 +9,11 @@
     --card-shadow: 0 8px 24px rgba(2, 6, 23, 0.6);
 }
 
-html, body { height: 100%; }
+html, body { height: 100%; margin: 0; }
 
 body {
-    margin: 0;
-    font-family: "Be Vietnam Pro", system-ui, -apple-system, sans-serif;
+    font-family: "Be Vietnam Pro", system-ui, sans-serif;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0.2)), var(--bg);
-    background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     color: #e6eef6;
@@ -27,10 +25,9 @@ body {
     max-width: 1100px;
     margin: 32px auto;
     padding: 24px;
-    transition: opacity 220ms ease;
 }
 
-/* Header & Nav */
+/* Header */
 header {
     display: flex;
     align-items: center;
@@ -40,15 +37,8 @@ header {
 }
 
 .brand { display: flex; align-items: center; gap: 12px; }
-
-.flag {
-    width: 56px; height: 32px;
-    border-radius: 6px; overflow: hidden;
-    box-shadow: var(--card-shadow);
-}
-
-.title { display: flex; flex-direction: column; }
-.title .name { font-weight: 800; font-size: 1.05rem; letter-spacing: 0.2px; }
+.flag { width: 56px; height: 32px; border-radius: 6px; overflow: hidden; box-shadow: var(--card-shadow); }
+.title .name { font-weight: 800; font-size: 1.05rem; }
 .title .full { font-weight: 600; color: var(--muted); font-size: 0.82rem; }
 
 nav a {
@@ -56,92 +46,39 @@ nav a {
     text-decoration: none;
     margin-left: 18px;
     font-weight: 600;
-    font-size: 0.95rem;
 }
 
-/* Mobile Menu */
+/* Mobile Menu - Seul élément qui garde une transition pour l'ouverture */
 .hamburger { display: none; border: 0; background: transparent; color: var(--muted); font-size: 22px; cursor: pointer; }
 
 .mobile-menu {
     position: fixed; left: 0; top: 0; height: 100%; width: 260px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    background: #0f172a;
     box-shadow: 2px 0 24px rgba(0, 0, 0, 0.6);
     transform: translateX(-100%);
-    transition: transform 320ms ease;
+    transition: transform 0.3s ease;
     z-index: 10001; padding: 20px;
 }
 
 .mobile-overlay {
     position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5);
-    opacity: 0; visibility: hidden;
-    transition: opacity 240ms ease, visibility 240ms ease;
-    z-index: 10000;
+    display: none; z-index: 10000;
 }
 
-/* Correction ici : Sélecteur valide */
 .mobile-open .mobile-menu { transform: translateX(0); }
-.mobile-open .mobile-overlay { opacity: 1; visibility: visible; }
+.mobile-open .mobile-overlay { display: block; }
 
-/* Elements communs */
+/* Boutons et Cartes */
 .btn {
     background: linear-gradient(90deg, var(--accent-blue), var(--accent-orange));
-    color: #061219; border: none; padding: 12px 18px;
-    border-radius: 10px; font-weight: 700; cursor: pointer;
-    text-decoration: none; box-shadow: 0 6px 18px rgba(1, 12, 22, 0.6);
+    color: #061219; padding: 12px 18px; border-radius: 10px;
+    font-weight: 700; text-decoration: none; display: inline-block;
 }
 
-.hero {
-    margin-top: 28px; background: var(--panel);
-    border-radius: 12px; padding: 36px;
-    box-shadow: var(--card-shadow);
-}
+.hero { margin-top: 28px; background: var(--panel); border-radius: 12px; padding: 36px; }
+.card { background: var(--glass); padding: 18px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
 
-.card {
-    background: var(--glass); padding: 18px;
-    border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.02);
-}
-
-/* L'overlay devient une simple nappe noire au-dessus pour l'entrée */
-.page-overlay {
-    position: fixed;
-    inset: 0;
-    background: #0b0f14; /* Couleur de ton fond */
-    z-index: 9999;
-    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s ease;
-    pointer-events: none;
-}
-
-/* Quand la page est prête, l'overlay disparaît en glissant */
-.page-overlay.hidden {
-    opacity: 0;
-    transform: translateY(-20px);
-    visibility: hidden;
-}
-
-/* Animation de sortie pour le contenu de la page */
-.fade-out {
-    opacity: 0 !important;
-    transform: translateY(10px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-/* Petit bonus : animation d'apparition douce pour le container */
-.container {
-    animation: fadeIn 0.8s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.footer { margin-top: 28px; color: var(--muted); font-size: 0.9rem; text-align: center; padding: 18px 0; }
-
-/* Responsive */
 @media (max-width: 720px) {
-    .hamburger { display: inline-flex; }
+    .hamburger { display: block; }
     nav { display: none; }
-    .hero h1 { font-size: 1.6rem; }
-    .flag { width: 46px; height: 26px; }
-    .container { padding: 16px; margin: 16px; }
 }

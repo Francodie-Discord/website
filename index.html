@@ -1,232 +1,69 @@
 <!doctype html>
 <html lang="fr">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<title>Francodie — République de Francodie</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600;800&display=swap" rel="stylesheet">
-	<style>
-		:root{
-			--bg:#0b0f14;
-			--panel: rgba(255,255,255,0.03);
-			--muted:#9aa4ae;
-			--accent-blue:#00BBFF;
-			--accent-red:#9C0000;
-			--accent-orange:#FF8000;
-			--glass: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-			--card-shadow: 0 8px 24px rgba(2,6,23,0.6);
-		}
-		html,body{height:100%;}
-		body{
-			margin:0;
-			font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-			background:
-				linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.2)),
-				var(--bg);
-			/* Empêche le fond de se répéter et le fixe pour couvrir tout l'écran */
-			background-repeat: no-repeat;
-			background-attachment: fixed;
-			background-size: cover;
-			color:#e6eef6;
-			-webkit-font-smoothing:antialiased;
-			-moz-osx-font-smoothing:grayscale;
-			line-height:1.45;
-		}
-		.container{
-			max-width:1100px;
-			margin:32px auto;
-			padding:24px;
-		}
-		header{
-			display:flex;
-			align-items:center;
-			justify-content:space-between;
-			gap:16px;
-		}
-		.brand{
-			display:flex;
-			align-items:center;
-			gap:12px;
-		}
-		.flag{
-			width:56px;
-			height:32px;
-			display:flex;
-			border-radius:6px;
-			overflow:hidden;
-			box-shadow: var(--card-shadow);
-		}
-		.flag > i{flex:1}
-		.flag .b{background:var(--accent-blue)} .flag .r{background:var(--accent-red)} .flag .o{background:var(--accent-orange)}
-		.title{
-			display:flex;
-			flex-direction:column;
-			justify-content:center;
-		}
-		.title .name{font-weight:800;font-size:1.05rem;letter-spacing:0.2px}
-		.title .full{font-weight:600;color:var(--muted);font-size:0.82rem}
-		nav a{
-			color:var(--muted);
-			text-decoration:none;
-			margin-left:18px;
-			font-weight:600;
-			font-size:0.95rem;
-		}
-		/* hamburger for small screens */
-		.hamburger{display:none;border:0;background:transparent;color:var(--muted);font-size:22px;cursor:pointer}
-		.mobile-menu{position:fixed;left:0;top:0;height:100%;width:260px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));box-shadow:2px 0 24px rgba(0,0,0,0.6);transform:translateX(-100%);transition:transform 320ms ease;z-index:10001;padding:20px}
-		.mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);opacity:0;visibility:hidden;transition:opacity 240ms ease,visibility 240ms ease;z-index:10000}
-		document.documentElement.mobile-open .mobile-menu{transform:translateX(0)}
-		document.documentElement.mobile-open .mobile-overlay{opacity:1;visibility:visible}
-		.hero{
-			margin-top:28px;
-			background:var(--panel);
-			border-radius:12px;
-			padding:36px;
-			box-shadow: var(--card-shadow);
-			display:flex;
-			flex-direction:column;
-			gap:16px;
-			align-items:flex-start;
-		}
-		.hero-top{
-			display:flex;
-			align-items:center;
-			justify-content:space-between;
-			width:100%;
-			gap:24px;
-		}
-		.hero h1{margin:0;font-size:2.2rem;letter-spacing:0.6px}
-		.hero p.lead{margin:0;color:var(--muted);font-size:1.05rem}
-		.btn{
-			background: linear-gradient(90deg,var(--accent-blue),var(--accent-orange));
-			color:#061219;
-			border:none;
-			padding:12px 18px;
-			border-radius:10px;
-			font-weight:700;
-			cursor:pointer;
-			text-decoration:none;
-			box-shadow: 0 6px 18px rgba(1,12,22,0.6);
-		}
-		.grid{
-			display:grid;
-			grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-			gap:16px;
-			margin-top:20px;
-			width:100%;
-		}
-		.card{
-			background:var(--glass);
-			padding:18px;
-			border-radius:10px;
-			border:1px solid rgba(255,255,255,0.02);
-		}
-		h3{margin:0 0 8px 0;font-size:1.05rem}
-		.footer{
-			margin-top:28px;
-			color:var(--muted);
-			font-size:0.9rem;
-			text-align:center;
-			padding:18px 0;
-		}
-		@media (max-width:720px){
-			.hero h1{font-size:1.6rem}
-			.flag{width:46px;height:26px}
-			.container{padding:16px;margin:16px;}
-			/* hide desktop nav, show hamburger */
-			nav{display:none}
-			.hamburger{display:inline-flex}
-		}
-
-		/* overlay fade transitions (mobile-friendly) */
-		.page-overlay{position:fixed;inset:0;background:#061219;transition:opacity 420ms ease,visibility 420ms ease;z-index:9999;opacity:1;visibility:visible}
-		.page-overlay.hidden{opacity:0;visibility:hidden}
-
-		/* keep layout responsive */
-		.container{transition:opacity 220ms ease}
-		@media (max-width:720px){
-			.hero h1{font-size:1.6rem}
-			.flag{width:46px;height:26px}
-			.container{padding:16px;margin:16px;}
-		}
-		@media (max-width:520px){
-			nav{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-			nav a{margin-left:8px;font-size:0.95rem}
-			.grid{grid-template-columns:1fr}
-			.hero{padding:20px}
-			.title .name{font-size:1rem}
-		}
-	</style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Francodie — République de Francodie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-	<div id="page-overlay" class="page-overlay"></div>
-	<div class="container">
-		<header>
-			<div class="brand">
-				<div class="flag" aria-hidden="true">
-					<img src="cdn/drapeau.png" alt="Drapeau de la République de Francodie" style="width:100%;height:100%;object-fit:contain;border-radius:6px">
-				</div>
-				<div class="title" role="banner">
-					<div class="name">Francodie</div>
-					<div class="full">République de Francodie</div>
-				</div>
-			</div>
-			<button class="hamburger" id="hamburger" aria-label="Ouvrir le menu">☰</button>
-			<nav aria-label="Navigation principale">
-				<a href="index.html">Accueil</a>
-				<a href="staff.html">Staff</a>
-				<a class="btn" href="https://discord.francodie.com/" target="_blank" rel="noopener">Rejoindre</a>
-			</nav>
-		</header>
-		<!-- mobile menu + overlay -->
-		<div id="mobile-menu" class="mobile-menu" aria-hidden="true">
-			<nav aria-label="Navigation mobile">
-				<a href="index.html">Accueil</a>
-				<a href="staff.html">Staff</a>
-				<a class="btn" href="https://discord.francodie.com/" target="_blank" rel="noopener">Rejoindre</a>
-			</nav>
-		</div>
-		<div id="mobile-overlay" class="mobile-overlay" tabindex="-1" aria-hidden="true"></div>
+    <div id="page-overlay" class="page-overlay"></div>
+    <div class="container">
+        <header>
+            <div class="brand">
+                <div class="flag">
+                    <img src="cdn/drapeau.png" alt="Drapeau" style="width:100%;height:100%;object-fit:cover">
+                </div>
+                <div class="title">
+                    <div class="name">Francodie</div>
+                    <div class="full">République de Francodie</div>
+                </div>
+            </div>
+            <button class="hamburger" id="hamburger">☰</button>
+            <nav>
+                <a href="index.html">Accueil</a>
+                <a href="staff.html">Staff</a>
+                <a class="btn" href="https://discord.francodie.com/" target="_blank">Rejoindre</a>
+            </nav>
+        </header>
 
-		<section class="hero" aria-labelledby="hero-title">
-			<div class="hero-top">
-				<div style="display:flex;align-items:center;gap:20px">
-					<div>
-						<h1 id="hero-title">Francodie</h1>
-						<p class="lead">« Liberté, convivialité, solidarité » — serveur francophone communautaire</p>
-					</div>
-				</div>
-				<div>
-					<a class="btn" href="https://discord.francodie.com/" target="_blank" rel="noopener">Rejoindre le serveur</a>
-				</div>
-			</div>
+        <div id="mobile-menu" class="mobile-menu">
+            <nav style="display: flex; flex-direction: column; gap: 20px;">
+                <a href="index.html">Accueil</a>
+                <a href="staff.html">Staff</a>
+                <a class="btn" href="https://discord.francodie.com/">Rejoindre</a>
+            </nav>
+        </div>
+        <div id="mobile-overlay" class="mobile-overlay"></div>
 
-			<div class="grid" role="region" aria-label="Informations">
-				<article class="card" id="about">
-					<h3>À propos</h3>
-					<p class="muted" style="color:var(--muted);margin-top:8px">Un serveur actif, accueillant et chaleureux où on parle beaucoup et on utilise régulièrement les salons vocaux.</p>
-				</article>
+        <section class="hero">
+            <div style="display:flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1>Francodie</h1>
+                    <p style="color:var(--muted)">« Liberté, convivialité, solidarité » — serveur francophone</p>
+                </div>
+                <a class="btn" href="https://discord.francodie.com/">Rejoindre le serveur</a>
+            </div>
 
-				<article class="card" id="passions">
-					<h3>Nos passions</h3>
-					<p class="muted" style="color:var(--muted);margin-top:8px">Nous partageons une passion commune pour la grande distribution, l'audiovisuel (télévision et radio) et Minecraft, avec deux maps collaboratives à explorer en communauté.</p>
-				</article>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:16px; margin-top:30px;">
+                <article class="card">
+                    <h3>À propos</h3>
+                    <p style="color:var(--muted)">Un serveur actif et chaleureux où on parle beaucoup et on utilise régulièrement les salons vocaux.</p>
+                </article>
+                <article class="card">
+                    <h3>Nos passions</h3>
+                    <p style="color:var(--muted)">Grande distribution, audiovisuel et Minecraft avec deux maps collaboratives.</p>
+                </article>
+                <article class="card">
+                    <h3>Projets</h3>
+                    <p style="color:var(--muted)">Un univers fictif riche avec pays, entreprises et médias propres à la communauté.</p>
+                </article>
+            </div>
+        </section>
 
-				<article class="card" id="projects">
-					<h3>Projets</h3>
-					<p class="muted" style="color:var(--muted);margin-top:8px">Nous avons créé un univers fictif riche avec pays et groupes, dotés d'enseignes commerciales, chaînes de télévision, radios, médias et journaux.</p>
-				</article>
-			</div>
-		</section>
-
-		<footer class="footer">
-			<span>République de Francodie — « Liberté, convivialité, solidarité »</span>
-		</footer>
-	</div>
-	<script src="script.js"></script>
+        <footer class="footer">République de Francodie</footer>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

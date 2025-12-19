@@ -287,12 +287,12 @@
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 12px;
-            overflow: hidden;
-            height: 400px;
+            height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
+            padding: 3rem;
         }
 
         .full-image-card:hover {
@@ -301,8 +301,9 @@
 
         .full-image-card img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
         }
 
         .full-image-placeholder {
@@ -422,7 +423,7 @@
         <div class="section-card">
             <div class="section-content">
                 <h2>Le commencement</h2>
-                <p>La Francodie a été créé suite à la fin entre un autre serveur Discord. Le 10 mai 2025, à 14h32, la Francodie est née. Le premier message envoyé est une photo de la date et de l'heure de création du serveur, suivi du message "bon bon bon" envoyé par Cube, le fondateur de la Francodie.</p>
+                <p>[Votre texte ici - Racontez les débuts de la Francodie, comment le serveur a été créé, les premières idées et les premiers membres...]</p>
             </div>
             <div class="section-image">
                 <img src="cdn/about/commencement.png" alt="Le commencement" style="display: none;">

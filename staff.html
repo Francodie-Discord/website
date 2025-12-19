@@ -118,6 +118,78 @@
             box-shadow: 0 4px 20px rgba(0, 212, 255, 0.4);
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 5rem 2rem 2rem;
+            transition: right 0.3s ease;
+            z-index: 999;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            padding: 1rem;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+        }
+
         /* Hero Section */
         .hero {
             text-align: center;
@@ -233,9 +305,27 @@
         /* Responsive */
         @media (max-width: 968px) {
             nav {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-center {
+                display: none;
+            }
+
+            .nav-right {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .mobile-overlay {
+                display: block;
             }
 
             .hero h1 {
@@ -267,7 +357,23 @@
             <a href="about.html" class="nav-btn">À propos</a>
             <a href="https://discord.francodie.com/" class="join-btn" target="_blank">Rejoindre</a>
         </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <a href="index.html" class="nav-btn">Accueil</a>
+        <a href="staff.html" class="nav-btn active">Staff</a>
+        <a href="about.html" class="nav-btn">À propos</a>
+        <a href="https://discord.francodie.com/" class="join-btn" target="_blank">Rejoindre</a>
+    </div>
 
     <!-- Hero Section -->
     <div class="hero">
@@ -294,13 +400,6 @@
                     <div class="staff-role">Vice-président</div>
                     <div class="staff-username">@creabreizh</div>
                 </div>
-                
-                <div class="staff-card">
-                    <img src="cdn/staff/nathan.png" alt="NathxnAzuur" class="staff-avatar">
-                    <div class="staff-name">NathxnAzuur</div>
-                    <div class="staff-role">Premier Ministre</div>
-                    <div class="staff-username">@nathxnazuur</div>
-                </div>
             </div>
         </div>
 
@@ -309,10 +408,10 @@
             <h2>Ministres</h2>
             <div class="staff-grid">
                 <div class="staff-card">
-                    <img src="cdn/staff/arthur.png" alt="ArthWare" class="staff-avatar">
-                    <div class="staff-name">ArthWare</div>
+                    <img src="cdn/staff/nathan.png" alt="NathxnAzuur" class="staff-avatar">
+                    <div class="staff-name">NathxnAzuur</div>
                     <div class="staff-role">Ministre</div>
-                    <div class="staff-username">@arthware</div>
+                    <div class="staff-username">@nathxnazuur</div>
                 </div>
 
                 <div class="staff-card">
@@ -327,33 +426,6 @@
                     <div class="staff-name">RC'</div>
                     <div class="staff-role">Ministre</div>
                     <div class="staff-username">@rca37</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Députés -->
-        <div class="staff-section">
-            <h2>Députés</h2>
-            <div class="staff-grid">
-                <div class="staff-card">
-                    <img src="cdn/staff/adam.png" alt="Adam68" class="staff-avatar">
-                    <div class="staff-name">Adam68</div>
-                    <div class="staff-role">Député</div>
-                    <div class="staff-username">@adam68etsestc</div>
-                </div>
-
-                <div class="staff-card">
-                    <img src="cdn/staff/mathys.png" alt="Mathys" class="staff-avatar">
-                    <div class="staff-name">Mathys</div>
-                    <div class="staff-role">Député</div>
-                    <div class="staff-username">@mrjavel59</div>
-                </div>
-
-                <div class="staff-card">
-                    <img src="cdn/staff/stone.png" alt="RealStone" class="staff-avatar">
-                    <div class="staff-name">RealStone</div>
-                    <div class="staff-role">Député</div>
-                    <div class="staff-username">@realstone67277</div>
                 </div>
             </div>
         </div>
@@ -375,6 +447,32 @@
         });
         
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Hamburger menu
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileOverlay = document.querySelector('.mobile-overlay');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+        });
+
+        mobileOverlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+            });
+        });
     </script>
 </body>
 </html>

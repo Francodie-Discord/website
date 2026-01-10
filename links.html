@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francodie - Liens</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .nav-left img {
+            width: 40px;
+            height: 28px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .nav-title h1 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-title p {
+            font-size: 0.7rem;
+            color: #666;
+            font-weight: 300;
+            margin-top: 0.1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #00BBFF, #FF8000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 300;
+        }
+
+        /* Links Container */
+        .links-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 2rem 6rem;
+            flex: 1;
+        }
+
+        .link-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(0, 187, 255, 0.3);
+            transform: translateX(5px);
+        }
+
+        .link-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex: 1;
+        }
+
+        .link-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00BBFF, #FF8000);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .link-info h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.01em;
+        }
+
+        .link-info p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 300;
+        }
+
+        .link-arrow {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .link-card:hover .link-arrow {
+            color: #00BBFF;
+            transform: translateX(5px);
+        }
+
+        /* Restricted badge */
+        .restricted-badge {
+            background: rgba(156, 0, 0, 0.3);
+            border: 1px solid rgba(156, 0, 0, 0.5);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: #ff6b6b;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: auto;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .link-card {
+                padding: 1.5rem;
+            }
+
+            .link-content {
+                gap: 1rem;
+            }
+
+            .link-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+
+            .link-info h2 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-left">
+            <img src="cdn/flag.png" alt="Drapeau Francodie">
+            <div class="nav-title">
+                <h1>Francodie</h1>
+                <p>République de Francodie</p>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Nos Liens</h1>
+        <p class="subtitle">Tous les sites et services de la Francodie</p>
+    </div>
+
+    <!-- Links Container -->
+    <div class="links-container">
+        <!-- Site principal -->
+        <a href="https://francodie.com" class="link-card" target="_blank">
+            <div class="link-content">
+                <div class="link-icon">🏠</div>
+                <div class="link-info">
+                    <h2>Site principal</h2>
+                    <p>francodie.com</p>
+                </div>
+            </div>
+            <span class="link-arrow">→</span>
+        </a>
+
+        <!-- Serveur Discord -->
+        <a href="https://discord.francodie.com" class="link-card" target="_blank">
+            <div class="link-content">
+                <div class="link-icon">💬</div>
+                <div class="link-info">
+                    <h2>Serveur Discord</h2>
+                    <p>discord.francodie.com</p>
+                </div>
+            </div>
+            <span class="link-arrow">→</span>
+        </a>
+
+        <!-- Radioplayer -->
+        <a href="https://play.francodie.com" class="link-card" target="_blank">
+            <div class="link-content">
+                <div class="link-icon">📻</div>
+                <div class="link-info">
+                    <h2>Radioplayer</h2>
+                    <p>play.francodie.com</p>
+                </div>
+            </div>
+            <span class="link-arrow">→</span>
+        </a>
+
+        <!-- Panel AzuraCast (Restreint) -->
+        <a href="https://radios.francodie.com" class="link-card" target="_blank">
+            <div class="link-content">
+                <div class="link-icon">🔒</div>
+                <div class="link-info">
+                    <h2>Panel AzuraCast</h2>
+                    <p>radios.francodie.com</p>
+                </div>
+                <span class="restricted-badge">Accès restreint</span>
+            </div>
+            <span class="link-arrow">→</span>
+        </a>
+
+        <!-- Blog -->
+        <a href="https://blog.francodie.com" class="link-card" target="_blank">
+            <div class="link-content">
+                <div class="link-icon">📝</div>
+                <div class="link-info">
+                    <h2>Blog</h2>
+                    <p>blog.francodie.com</p>
+                </div>
+            </div>
+            <span class="link-arrow">→</span>
+        </a>
+
+        <!-- Cartes MyMaps -->
+        <a href="https://maps.francodie.com" class="link-card" target="_blank">
+            <div class="link-content">
+                <div class="link-icon">🗺️</div>
+                <div class="link-info">
+                    <h2>Cartes MyMaps</h2>
+                    <p>maps.francodie.com</p>
+                </div>
+            </div>
+            <span class="link-arrow">→</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <span id="year"></span> République de Francodie</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

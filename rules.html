@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francodie - Règlement</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .nav-left img {
+            width: 40px;
+            height: 28px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .nav-title h1 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-title p {
+            font-size: 0.7rem;
+            color: #666;
+            font-weight: 300;
+            margin-top: 0.1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #00BBFF, #FF8000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Rules Container */
+        .rules-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 6rem;
+        }
+
+        .rule-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+
+        .rule-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(0, 187, 255, 0.2);
+        }
+
+        .rule-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .rule-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .rule-card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: -0.01em;
+        }
+
+        .rule-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .rule-card li {
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            position: relative;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .rule-card li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #00BBFF;
+            font-weight: bold;
+        }
+
+        /* Channel mention style (Discord-like) */
+        .channel {
+            background: rgba(88, 101, 242, 0.3);
+            color: #5865F2;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .highlight {
+            background: rgba(0, 187, 255, 0.1);
+            border-left: 3px solid #00BBFF;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .highlight p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0.5rem 0;
+            font-weight: 400;
+        }
+
+        .highlight strong {
+            color: #00BBFF;
+        }
+
+        .note-box {
+            background: rgba(255, 128, 0, 0.1);
+            border: 1px solid rgba(255, 128, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+        }
+
+        .note-box p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0.8rem 0;
+            line-height: 1.6;
+        }
+
+        .note-box .icon {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: auto;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .rule-card {
+                padding: 1.5rem;
+            }
+
+            .rule-card h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-left">
+            <img src="cdn/flag.png" alt="Drapeau Francodie">
+            <div class="nav-title">
+                <h1>Francodie</h1>
+                <p>République de Francodie</p>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>📜 Règlement du serveur</h1>
+        <p class="subtitle">Bienvenue sur le serveur de la <strong>Francodie</strong> 🇫🇷<br>
+        Pour que le serveur reste sympa (et qu'on évite les dramas inutiles), merci de respecter ces règles simples.</p>
+    </div>
+
+    <!-- Rules Container -->
+    <div class="rules-container">
+        
+        <!-- Règle 1 -->
+        <div class="rule-card">
+            <div class="rule-header">
+                <span class="rule-icon">1️⃣</span>
+                <h2>Respect obligatoire</h2>
+            </div>
+            <ul>
+                <li>Le respect est non négociable.</li>
+                <li>Pas d'insultes, harcèlement, moqueries, menaces ou discriminations.</li>
+                <li>Les débats sont autorisés, les attaques personnelles non.</li>
+            </ul>
+        </div>
+
+        <!-- Règle 2 -->
+        <div class="rule-card">
+            <div class="rule-header">
+                <span class="rule-icon">2️⃣</span>
+                <h2>Contenu autorisé</h2>
+            </div>
+            <ul>
+                <li>Aucun contenu <strong>NSFW</strong>, choquant ou illégal.</li>
+                <li>Pas de propos haineux, violents ou extrêmes.</li>
+                <li>On garde un minimum de décence, même pour rigoler.</li>
+            </ul>
+        </div>
+
+        <!-- Règle 3 -->
+        <div class="rule-card">
+            <div class="rule-header">
+                <span class="rule-icon">3️⃣</span>
+                <h2>Spam, flood & hors-sujet</h2>
+            </div>
+            <ul>
+                <li><strong>Interdits sur tout le serveur</strong>, <strong>SAUF</strong> dans le salon <span class="channel">#généralternatif</span>.</li>
+            </ul>
+            <div class="highlight">
+                <p>👉 Dans <span class="channel">#généralternatif</span> : flood, spam et hors-sujet <strong>AUTORISÉS</strong></p>
+                <p>👉 Le chaos est volontaire et assumé</p>
+            </div>
+            <ul>
+                <li>En dehors de ce salon, abus = sanction.</li>
+            </ul>
+        </div>
+
+        <!-- Règle 4 -->
+        <div class="rule-card">
+            <div class="rule-header">
+                <span class="rule-icon">4️⃣</span>
+                <h2>Utilisation des salons</h2>
+            </div>
+            <ul>
+                <li>Chaque salon a un thème : merci de le respecter.</li>
+                <li>Évite de transformer un salon sérieux en discussion random (oui, même si c'est tentant).</li>
+            </ul>
+        </div>
+
+        <!-- Règle 5 -->
+        <div class="rule-card">
+            <div class="rule-header">
+                <span class="rule-icon">5️⃣</span>
+                <h2>Pseudos & profils</h2>
+            </div>
+            <ul>
+                <li>Pseudo et photo de profil corrects exigés.</li>
+                <li>Pas de noms offensants, trompeurs ou illisibles.</li>
+            </ul>
+        </div>
+
+        <!-- Règle 6 -->
+        <div class="rule-card">
+            <div class="rule-header">
+                <span class="rule-icon">6️⃣</span>
+                <h2>Publicité</h2>
+            </div>
+            <ul>
+                <li>La publicité (serveurs, sites, réseaux sociaux…) est <strong>SEULEMENT</strong> autorisée dans le salon <span class="channel">#publicité</span>.</li>
+                <li>Toute publicité <strong>en dehors de ce salon sera passible de sanctions</strong>.</li>
+            </ul>
+        </div>
+
+        <!-- Règle 7 -->
+        <div class="rule-card">
+            <div class="rule-header">
+                <span class="rule-icon">7️⃣</span>
+                <h2>Staff & sanctions</h2>
+            </div>
+            <ul>
+                <li>Les décisions du <strong>staff</strong> doivent être respectées.</li>
+                <li>En cas de non-respect : avertissement, mute, kick ou ban selon la situation.</li>
+                <li>Chercher la faille dans le règlement = mauvaise stratégie.</li>
+            </ul>
+        </div>
+
+        <!-- Règle 8 -->
+        <div class="rule-card">
+            <div class="rule-header">
+                <span class="rule-icon">8️⃣</span>
+                <h2>Bon sens</h2>
+            </div>
+            <ul>
+                <li>Si tu te demandes <em>« est-ce que j'ai le droit ? »</em></li>
+            </ul>
+            <div class="highlight">
+                <p>👉 Regarde les règles.</p>
+                <p>👉 Si t'as encore un doute… évite.</p>
+            </div>
+        </div>
+
+        <!-- Note finale -->
+        <div class="note-box">
+            <p><span class="icon">✅</span> En restant sur le serveur, tu acceptes ce règlement.</p>
+            <p><span class="icon">💬</span> Un souci ? Contacte le staff.</p>
+            <p><span class="icon">🎉</span> Amuse-toi bien sur la <strong>Francodie</strong> !</p>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <span id="year"></span> République de Francodie</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

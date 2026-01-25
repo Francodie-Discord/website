@@ -66,7 +66,7 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 6rem 2rem 4rem;
+            padding: 6rem 2rem 3rem;
         }
 
         .hero h1 {
@@ -86,74 +86,165 @@
             font-weight: 300;
         }
 
-        /* Download Container */
-        .download-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 2rem 6rem;
+        /* Download Section */
+        .download-section {
+            max-width: 700px;
+            margin: 2rem auto;
+            padding: 0 2rem;
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            align-items: center;
+            gap: 1.5rem;
         }
 
-        .download-card {
+        .primary-download {
+            width: 100%;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 12px;
-            padding: 2.5rem;
+            padding: 2rem;
+            text-align: center;
             transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
         }
 
-        .download-card:hover {
+        .primary-download:hover {
             background: rgba(255, 255, 255, 0.04);
             border-color: rgba(0, 187, 255, 0.3);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
-        .os-icon {
-            width: 80px;
-            height: 80px;
-            flex-shrink: 0;
+        .primary-download h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
         }
 
-        .download-info {
-            flex: 1;
-        }
-
-        .download-info h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.01em;
-        }
-
-        .download-info p {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 300;
-        }
-
-        .download-btn {
+        .download-btn-primary {
             background: linear-gradient(135deg, #00D4FF 0%, #FF6B35 50%, #FFB84D 100%);
             color: white;
+            font-weight: 600;
+            padding: 1.2rem 3rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .download-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .download-btn-primary svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .alternative-downloads {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .download-btn-alt {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
             font-weight: 500;
-            padding: 0.9rem 2rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 20px;
             text-decoration: none;
             transition: all 0.3s;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 1rem;
+            gap: 0.7rem;
+            font-size: 0.95rem;
         }
 
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 25px rgba(0, 212, 255, 0.4);
+        .download-btn-alt:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(0, 187, 255, 0.3);
+            color: #fff;
+        }
+
+        .download-btn-alt svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Server Info Section */
+        .server-info {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .info-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(0, 187, 255, 0.2);
+        }
+
+        .info-card.reverse {
+            direction: rtl;
+        }
+
+        .info-card.reverse > * {
+            direction: ltr;
+        }
+
+        .info-content h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .info-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        .info-image {
+            width: 100%;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .info-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .info-image-placeholder {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.9rem;
         }
 
         /* Footer */
@@ -180,15 +271,23 @@
                 font-size: 2.2rem;
             }
 
-            .download-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 2rem;
+            .download-btn-primary {
+                padding: 1rem 2rem;
+                font-size: 1rem;
             }
 
-            .os-icon {
-                width: 60px;
-                height: 60px;
+            .info-card {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                gap: 2rem;
+            }
+
+            .info-card.reverse {
+                direction: ltr;
+            }
+
+            .info-image {
+                height: 200px;
             }
         }
     </style>
@@ -208,48 +307,73 @@
     <!-- Hero Section -->
     <div class="hero">
         <h1>⛏️ Launcher Minecraft</h1>
-        <p class="subtitle">Télécharge le launcher pour rejoindre le serveur Minecraft de la Francodie</p>
+        <p class="subtitle">Rejoins le serveur Minecraft de la Francodie</p>
     </div>
 
-    <!-- Download Container -->
-    <div class="download-container">
-        
-        <!-- Windows -->
-        <div class="download-card">
-            <svg class="os-icon" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0" y="0" width="38" height="38" fill="#00BBFF"/>
-                <rect x="42" y="0" width="46" height="38" fill="#00BBFF"/>
-                <rect x="0" y="42" width="38" height="46" fill="#00BBFF"/>
-                <rect x="42" y="42" width="46" height="46" fill="#00BBFF"/>
-            </svg>
-            <div class="download-info">
-                <h2>Windows</h2>
-                <p>Launcher pour Windows (fichier .exe)</p>
-            </div>
-            <a href="[LIEN_WINDOWS]" class="download-btn" download>
-                ⬇️ Télécharger
+    <!-- Download Section -->
+    <div class="download-section">
+        <!-- Primary Download (Windows) -->
+        <div class="primary-download">
+            <h2>Télécharger pour Windows</h2>
+            <a href="[LIEN_WINDOWS]" class="download-btn-primary" download>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" fill="currentColor">
+                    <path d="M0 12.402l35.687-4.8602.016 34.423-35.67.203zm35.67 33.529l.028 34.453L.028 75.48.026 45.7zm4.326-39.025L87.314 0v41.527l-47.318.376zm47.329 39.349l-.011 41.34-47.318-6.678-.066-34.739z"/>
+                </svg>
+                Télécharger
             </a>
         </div>
 
-        <!-- macOS & Linux (.jar) -->
-        <div class="download-card">
-            <svg class="os-icon" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- macOS Apple logo style -->
-                <path d="M44 10C44 10 50 8 54 15C54 15 60 8 60 20C60 32 50 35 50 35C50 35 55 40 50 50C45 60 35 58 35 45C35 32 44 10 44 10Z" fill="#FF8000"/>
-                <!-- Linux Tux style -->
-                <ellipse cx="30" cy="55" rx="12" ry="15" fill="#00BBFF"/>
-                <ellipse cx="58" cy="55" rx="12" ry="15" fill="#00BBFF"/>
-                <path d="M44 65C44 65 35 70 30 75C30 75 44 78 58 75C58 75 53 70 44 65Z" fill="#FFB84D"/>
-            </svg>
-            <div class="download-info">
-                <h2>macOS & Linux</h2>
-                <p>Launcher universel (fichier .jar - nécessite Java)</p>
-            </div>
-            <a href="[LIEN_JAR]" class="download-btn" download>
-                ⬇️ Télécharger
+        <!-- Alternative Downloads -->
+        <div class="alternative-downloads">
+            <a href="[LIEN_JAR]" class="download-btn-alt" download>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                macOS
+            </a>
+            <a href="[LIEN_JAR]" class="download-btn-alt" download>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.5 10c-.73 0-1.39.25-1.93.68-.23.19-.28.54-.09.77.19.24.54.28.77.1.36-.29.82-.47 1.32-.47.5 0 .97.18 1.33.5.19.17.48.16.66-.03.17-.19.16-.48-.03-.66-.56-.52-1.29-.83-2.09-.83m.58 2.95c.27-.27.27-.72 0-.99-.28-.28-.72-.28-1 0-.27.27-.27.72 0 .99.28.28.72.28 1 0M5.66 3.81C4.32 4.38 3.2 5.39 2.5 6.68 1.47 8.55 1.29 11.03 2 13.34c.57 1.86 1.78 3.45 3.41 4.48 1.58 1 3.52 1.47 5.41 1.27 1.94-.19 3.81-1.05 5.21-2.43.07-.07.07-.19 0-.26l-1.83-1.84c-.07-.07-.19-.07-.26 0-.73.73-1.7 1.15-2.74 1.18-1.04.04-2.03-.33-2.79-1.03-.79-.73-1.23-1.76-1.23-2.84 0-1.08.44-2.11 1.23-2.84.76-.7 1.75-1.07 2.79-1.03 1.04.03 2.01.45 2.74 1.18.07.07.19.07.26 0l1.83-1.84c.07-.07.07-.19 0-.26-1.4-1.38-3.27-2.24-5.21-2.43-1.89-.2-3.83.27-5.41 1.27m5.95 11.27c.18-.66.28-1.36.28-2.08 0-.72-.1-1.42-.28-2.08-.33.36-.67.86-.67 2.08s.34 1.72.67 2.08m5.66-8.86c-.23-.12-.5-.02-.62.2l-.9 1.68c-.12.23-.02.5.2.62.23.12.5.02.62-.2l.9-1.68c.12-.23.02-.5-.2-.62m-2.73-1.94c-.12-.23-.39-.33-.62-.2l-1.68.9c-.23.12-.33.39-.2.62.12.23.39.33.62.2l1.68-.9c.23-.12.33-.39.2-.62z"/>
+                </svg>
+                Linux
             </a>
         </div>
+    </div>
 
+    <!-- Server Info Section -->
+    <div class="server-info">
+        <div class="info-card">
+            <div class="info-content">
+                <h2>À propos du serveur</h2>
+                <p>[Votre texte ici - Décrivez votre serveur Minecraft, le type de jeu, la communauté, etc...]</p>
+            </div>
+            <div class="info-image">
+                <img src="cdn/mc/server1.png" alt="Serveur Minecraft" style="display: none;">
+                <span class="info-image-placeholder">Image 1</span>
+            </div>
+        </div>
+
+        <div class="info-card reverse">
+            <div class="info-content">
+                <h2>Maps collaboratives</h2>
+                <p>[Votre texte ici - Parlez des maps, des builds, des projets collaboratifs...]</p>
+            </div>
+            <div class="info-image">
+                <img src="cdn/mc/server2.png" alt="Maps" style="display: none;">
+                <span class="info-image-placeholder">Image 2</span>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <div class="info-content">
+                <h2>Rejoins-nous !</h2>
+                <p>[Votre texte ici - Comment rejoindre, ce qu'il faut savoir, les règles du serveur...]</p>
+            </div>
+            <div class="info-image">
+                <img src="cdn/mc/server3.png" alt="Communauté" style="display: none;">
+                <span class="info-image-placeholder">Image 3</span>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -259,6 +383,18 @@
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Show images if they exist
+        document.querySelectorAll('.info-image img').forEach(img => {
+            img.addEventListener('load', function() {
+                this.style.display = 'block';
+                const placeholder = this.nextElementSibling;
+                if (placeholder) placeholder.style.display = 'none';
+            });
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+            });
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francodie - Launcher Minecraft</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .nav-left img {
+            width: 40px;
+            height: 28px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .nav-title h1 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-title p {
+            font-size: 0.7rem;
+            color: #666;
+            font-weight: 300;
+            margin-top: 0.1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #00BBFF, #FF8000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 300;
+        }
+
+        /* Download Container */
+        .download-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem 6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .download-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .download-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(0, 187, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .os-icon {
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
+        }
+
+        .download-info {
+            flex: 1;
+        }
+
+        .download-info h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .download-info p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 300;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #00D4FF 0%, #FF6B35 50%, #FFB84D 100%);
+            color: white;
+            font-weight: 500;
+            padding: 0.9rem 2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: auto;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .download-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem;
+            }
+
+            .os-icon {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-left">
+            <img src="cdn/flag.png" alt="Drapeau Francodie">
+            <div class="nav-title">
+                <h1>Francodie</h1>
+                <p>République de Francodie</p>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>⛏️ Launcher Minecraft</h1>
+        <p class="subtitle">Télécharge le launcher pour rejoindre le serveur Minecraft de la Francodie</p>
+    </div>
+
+    <!-- Download Container -->
+    <div class="download-container">
+        
+        <!-- Windows -->
+        <div class="download-card">
+            <svg class="os-icon" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="38" height="38" fill="#00BBFF"/>
+                <rect x="42" y="0" width="46" height="38" fill="#00BBFF"/>
+                <rect x="0" y="42" width="38" height="46" fill="#00BBFF"/>
+                <rect x="42" y="42" width="46" height="46" fill="#00BBFF"/>
+            </svg>
+            <div class="download-info">
+                <h2>Windows</h2>
+                <p>Launcher pour Windows (fichier .exe)</p>
+            </div>
+            <a href="[LIEN_WINDOWS]" class="download-btn" download>
+                ⬇️ Télécharger
+            </a>
+        </div>
+
+        <!-- macOS & Linux (.jar) -->
+        <div class="download-card">
+            <svg class="os-icon" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- macOS Apple logo style -->
+                <path d="M44 10C44 10 50 8 54 15C54 15 60 8 60 20C60 32 50 35 50 35C50 35 55 40 50 50C45 60 35 58 35 45C35 32 44 10 44 10Z" fill="#FF8000"/>
+                <!-- Linux Tux style -->
+                <ellipse cx="30" cy="55" rx="12" ry="15" fill="#00BBFF"/>
+                <ellipse cx="58" cy="55" rx="12" ry="15" fill="#00BBFF"/>
+                <path d="M44 65C44 65 35 70 30 75C30 75 44 78 58 75C58 75 53 70 44 65Z" fill="#FFB84D"/>
+            </svg>
+            <div class="download-info">
+                <h2>macOS & Linux</h2>
+                <p>Launcher universel (fichier .jar - nécessite Java)</p>
+            </div>
+            <a href="[LIEN_JAR]" class="download-btn" download>
+                ⬇️ Télécharger
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <span id="year"></span> République de Francodie</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -216,6 +216,27 @@
         footer a:hover {
             color: #00BBFF;
         }
+
+        .nav-right {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .join-btn {
+            background: linear-gradient(135deg, #00D4FF 0%, #FF6B35 50%, #FFB84D 100%);
+            color: white;
+            font-weight: 500;
+            padding: 0.6rem 1.3rem;
+            margin-left: 0.5rem;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+
+        .join-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.4);
+        }
     </style>
 </head>
 <body>
@@ -227,6 +248,9 @@
                 <h1>Francodie</h1>
                 <p>République de Francodie</p>
             </div>
+        </div>
+        <div class="nav-right">
+            <a href="https://francodie.com/" class="join-btn" target="_blank">francodie.com</a>
         </div>
     </nav>
 

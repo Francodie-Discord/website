@@ -226,12 +226,6 @@
             margin-top: auto;
         }
 
-        footer p {
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.85rem;
-            font-weight: 300;
-        }
-
         /* Responsive */
         @media (max-width: 968px) {
             nav {
@@ -251,6 +245,16 @@
                 padding: 1rem 2rem;
                 font-size: 1rem;
             }
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        footer a:hover {
+            color: #00BBFF;
         }
     </style>
 </head>
@@ -317,6 +321,7 @@
     <!-- Footer -->
     <footer>
         <p>&copy; <span id="year"></span> République de Francodie</p>
+        <p><a href="privacy.html">Politique de confidentialité</a></p>
     </footer>
 
     <script>

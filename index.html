@@ -261,12 +261,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        footer p {
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.85rem;
-            font-weight: 300;
-        }
-
         /* Responsive */
         @media (max-width: 968px) {
             .sections-container {
@@ -300,6 +294,23 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.85rem;
+            font-weight: 300;
+            margin: 0.3rem 0;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        footer a:hover {
+            color: #00BBFF;
         }
     </style>
 </head>
@@ -368,6 +379,7 @@
     <!-- Footer -->
     <footer>
         <p>&copy; <span id="year"></span> République de Francodie</p>
+        <p><a href="privacy.html">Politique de confidentialité</a></p>
     </footer>
 
     <script>

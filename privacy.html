@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francodie - Politique de confidentialité</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .nav-left img {
+            width: 40px;
+            height: 28px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .nav-title h1 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-title p {
+            font-size: 0.7rem;
+            color: #666;
+            font-weight: 300;
+            margin-top: 0.1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #00BBFF, #FF8000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .date {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 300;
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem 6rem;
+        }
+
+        .intro {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+
+        .section:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(0, 187, 255, 0.2);
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+
+        .section li {
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            position: relative;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .section li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #00BBFF;
+            font-weight: bold;
+        }
+
+        .contact-email {
+            color: #00BBFF;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .contact-email:hover {
+            color: #FF8000;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: auto;
+        }
+
+        footer a:hover {
+            color: #00BBFF;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .section h2 {
+                font-size: 1.3rem;
+            }
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.85rem;
+            font-weight: 300;
+            margin: 0.3rem 0;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        footer a:hover {
+            color: #00BBFF;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-left">
+            <img src="cdn/flag.png" alt="Drapeau Francodie">
+            <div class="nav-title">
+                <h1>Francodie</h1>
+                <p>République de Francodie</p>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>🔒 Politique de confidentialité</h1>
+        <p class="date">Dernière mise à jour : 4 février 2026</p>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+        <div class="intro">
+            Le site officiel de Francodie (francodie.com) s'engage à protéger votre vie privée. Cette politique décrit quelles informations sont collectées, comment elles sont utilisées et les mesures de sécurité mises en place.
+        </div>
+
+        <div class="section">
+            <h2>1. Collecte des données</h2>
+            <p>Francodie ne collecte aucune donnée personnelle. Les seules informations recueillies sont anonymes :</p>
+            <ul>
+                <li>Statistiques de navigation (pages consultées, durée des visites).</li>
+                <li>Cookies et technologies similaires pour améliorer l'expérience et analyser le trafic.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>2. Utilisation des données</h2>
+            <p>Les informations anonymes sont utilisées uniquement pour :</p>
+            <ul>
+                <li>Garantir le bon fonctionnement du site.</li>
+                <li>Améliorer l'expérience des visiteurs et analyser l'usage du site.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. Cookies</h2>
+            <p>Le site utilise des cookies pour :</p>
+            <ul>
+                <li>Mémoriser les préférences du visiteur.</li>
+                <li>Suivre les statistiques de manière anonyme.</li>
+            </ul>
+            <p>Vous pouvez désactiver les cookies dans votre navigateur. Certaines fonctionnalités du site pourraient alors ne plus fonctionner correctement.</p>
+        </div>
+
+        <div class="section">
+            <h2>4. Sécurité</h2>
+            <p>Le site est hébergé via Cloudflare, qui fournit des mesures avancées de protection contre les accès non autorisés, les pertes ou altérations de données anonymes.</p>
+        </div>
+
+        <div class="section">
+            <h2>5. Publication du site</h2>
+            <p>Le site francodie.com est publié par NathxnAzuur et l'équipe de la Francodie.</p>
+        </div>
+
+        <div class="section">
+            <h2>6. Contact</h2>
+            <p>Pour toutes questions, y compris concernant la politique de confidentialité, vous pouvez nous contacter à : <a href="mailto:contact@francodie.com" class="contact-email">contact@francodie.com</a>.</p>
+        </div>
+
+        <div class="section">
+            <h2>7. Modifications de la politique</h2>
+            <p>Cette politique peut être mise à jour périodiquement. La date de dernière mise à jour est indiquée en haut de cette page.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+            <p>&copy; <span id="year"></span> République de Francodie</p>
+            <p><a href="privacy.html">Politique de confidentialité</a></p>
+        </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

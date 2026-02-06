@@ -233,6 +233,10 @@
             transition: all 0.3s;
         }
 
+        .section-card:nth-child(4) {
+            grid-column: 2 / 3;
+        }
+
         .section-card:hover {
             background: rgba(255, 255, 255, 0.04);
             border-color: rgba(0, 187, 255, 0.3);
@@ -265,6 +269,10 @@
         @media (max-width: 968px) {
             .sections-container {
                 grid-template-columns: 1fr;
+            }
+
+            .section-card:nth-child(4) {
+                grid-column: 1 / 2;
             }
 
             nav {

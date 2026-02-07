@@ -50,7 +50,7 @@
             filter: blur(80px);
         }
 
-        /* Navigation */
+        /* Navigation unifiée */
         .nav-container {
             position: fixed;
             top: 25px;
@@ -107,7 +107,8 @@
             transition: all 0.3s ease;
         }
 
-        .nav-link:hover { color: #fff; background: rgba(255, 128, 0, 0.1); }
+        .nav-link:hover, .nav-link.active { color: #fff; background: rgba(255, 128, 0, 0.1); }
+        .nav-link.active { color: var(--accent-color); background: rgba(255, 128, 0, 0.15); }
 
         .join-btn {
             background: var(--accent-color);
@@ -139,9 +140,7 @@
             letter-spacing: -2px;
         }
 
-        .hero h1 span {
-            color: var(--accent-color);
-        }
+        .hero h1 span { color: var(--accent-color); }
 
         .server-pill {
             display: inline-flex;
@@ -195,23 +194,6 @@
             overflow: hidden;
         }
 
-        .download-box::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0;
-            width: 150px; height: 150px;
-            background: radial-gradient(circle, rgba(255, 128, 0, 0.1) 0%, transparent 70%);
-            z-index: 0;
-        }
-
-        .download-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
         .btn-main-download {
             background: var(--accent-color);
             color: white;
@@ -228,12 +210,8 @@
             margin-top: 1.5rem;
         }
 
-        .btn-main-download:hover {
-            transform: translateY(-5px);
-            filter: brightness(1.1);
-        }
+        .btn-main-download:hover { transform: translateY(-5px); filter: brightness(1.1); }
 
-        /* Requirements Grid */
         .req-container {
             margin-top: 3rem;
             display: grid;
@@ -264,18 +242,6 @@
             border-radius: 12px;
         }
 
-        .req-card h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .req-card p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
         .copy-toast {
             position: fixed;
             bottom: 30px;
@@ -290,34 +256,37 @@
             z-index: 2000;
         }
 
-        .copy-toast.show {
-            transform: translateX(-50%) translateY(0);
-        }
+        .copy-toast.show { transform: translateX(-50%) translateY(0); }
 
+        /* Footer unifié */
         footer {
             text-align: center;
-            padding: 4rem 2rem;
-            margin-top: auto;
+            padding: 8rem 2rem;
             border-top: 1px solid var(--glass-border);
-            color: var(--text-dim);
-            font-size: 0.9rem;
+            position: relative;
+            margin-top: auto;
         }
 
-        footer a {
+        .footer-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .footer-links a {
             color: var(--text-dim);
             text-decoration: none;
             transition: 0.3s;
-            margin: 0 10px;
         }
 
-        footer a:hover {
-            color: var(--accent-color);
-        }
+        .footer-links a:hover { color: var(--accent-color); }
 
         @media (max-width: 900px) {
             .nav-center { display: none; }
             .hero { padding-top: 10rem; }
             .content-section { padding: 1rem 1rem 6rem; }
+            .join-btn span { display: none; }
         }
     </style>
 </head>
@@ -330,21 +299,17 @@
         <nav data-aos="fade-down">
             <div class="nav-left">
                 <img src="cdn/drapeau.png" alt="Francodie" class="brand-logo" onerror="this.src='https://placehold.co/40x28/ff8000/white?text=F'">
-                <div class="nav-title">
-                    <h1>Francodie</h1>
-                </div>
+                <div class="nav-title"><h1>Francodie</h1></div>
             </div>
-            
             <div class="nav-center">
                 <a href="index.html" class="nav-link">Accueil</a>
+                <a href="minecraft.html" class="nav-link active">Minecraft</a>
                 <a href="staff.html" class="nav-link">Staff</a>
                 <a href="rules.html" class="nav-link">Règlement</a>
-                <a href="about.html" class="nav-link">À propos</a>
             </div>
-
             <a href="https://discord.francodie.com/" class="join-btn" target="_blank">
                 <i data-lucide="message-square"></i>
-                <span>Discord</span>
+                <span>Rejoindre</span>
             </a>
         </nav>
     </div>
@@ -361,7 +326,7 @@
 
     <main class="content-section">
         <div class="download-box" data-aos="fade-up">
-            <h2 class="download-title">Pack de démarrage</h2>
+            <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">Pack de démarrage</h2>
             <p style="color: var(--text-dim); margin-bottom: 1rem; max-width: 500px; margin-left: auto; margin-right: auto;">
                 Ce fichier contient le <strong>Modpack</strong> nécessaire et le <strong>Texturepack</strong> officiel pour profiter pleinement de l'expérience Francodie.
             </p>
@@ -392,10 +357,11 @@
 
     <div id="toast" class="copy-toast">IP copiée dans le presse-papier !</div>
 
-    <footer>
+    <footer data-aos="fade-in">
         <p>&copy; <span id="year"></span> République de Francodie</p>
-        <div style="margin-top: 1rem;">
+        <div class="footer-links">
             <a href="privacy.html">Confidentialité</a>
+            <a href="mailto:contact@francodie.com">Contact</a>
         </div>
     </footer>
 

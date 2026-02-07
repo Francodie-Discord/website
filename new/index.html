@@ -7,7 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <!-- AOS Library pour des animations Wow -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -22,11 +21,7 @@
             --radius-lg: 24px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
@@ -37,7 +32,6 @@
             line-height: 1.6;
         }
 
-        /* Arrière-plan dynamique */
         .bg-visuals {
             position: fixed;
             inset: 0;
@@ -65,7 +59,6 @@
             filter: blur(60px);
         }
 
-        /* Navigation Fixée et Centrée */
         .nav-container {
             position: fixed;
             top: 25px;
@@ -92,20 +85,8 @@
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .brand-logo {
-            width: 42px;
-            height: 30px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-        }
-
+        .nav-left { display: flex; align-items: center; gap: 12px; }
+        .brand-logo { width: 42px; height: 30px; object-fit: cover; border-radius: 10px; }
         .nav-title h1 {
             font-size: 1.1rem;
             font-weight: 800;
@@ -159,13 +140,6 @@
             box-shadow: 0 4px 15px var(--accent-glow);
         }
 
-        .join-btn:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 25px var(--accent-glow);
-            filter: brightness(1.1);
-        }
-
-        /* Hero Section */
         .hero {
             padding: 16rem 2rem 8rem;
             text-align: center;
@@ -207,7 +181,6 @@
             font-weight: 300;
         }
 
-        /* Grid System */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -228,23 +201,12 @@
             overflow: hidden;
         }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at top left, rgba(255, 128, 0, 0.1), transparent 70%);
-            opacity: 0;
-            transition: 0.5s;
-        }
-
         .card:hover {
             transform: translateY(-15px);
             border-color: var(--accent-color);
             background: rgba(255, 255, 255, 0.04);
             box-shadow: 0 30px 60px rgba(0,0,0,0.4);
         }
-
-        .card:hover::before { opacity: 1; }
 
         .icon-box {
             width: 70px;
@@ -265,19 +227,9 @@
             color: white;
         }
 
-        .card h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
+        .card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
+        .card p { color: var(--text-dim); font-size: 1.05rem; line-height: 1.8; }
 
-        .card p {
-            color: var(--text-dim);
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-        /* Footer */
         footer {
             text-align: center;
             padding: 8rem 2rem;
@@ -300,12 +252,10 @@
 
         .footer-links a:hover { color: var(--accent-color); }
 
-        /* Mobile */
         @media (max-width: 900px) {
             .nav-center { display: none; }
             .hero { padding-top: 12rem; }
             .join-btn span { display: none; }
-            nav { max-width: 95%; }
         }
     </style>
 </head>
@@ -319,18 +269,14 @@
         <nav data-aos="fade-down" data-aos-duration="1000">
             <div class="nav-left">
                 <img src="cdn/drapeau.png" alt="Francodie" class="brand-logo" onerror="this.src='https://placehold.co/40x28/ff8000/white?text=F'">
-                <div class="nav-title">
-                    <h1>Francodie</h1>
-                </div>
+                <div class="nav-title"><h1>Francodie</h1></div>
             </div>
-            
             <div class="nav-center">
-                <a href="#" class="nav-link active">Accueil</a>
+                <a href="index.html" class="nav-link active">Accueil</a>
+                <a href="minecraft.html" class="nav-link">Minecraft</a>
                 <a href="staff.html" class="nav-link">Staff</a>
-                <a href="about.html" class="nav-link">À propos</a>
-                <a href="links.html" class="nav-link">Liens</a>
+                <a href="rules.html" class="nav-link">Règlement</a>
             </div>
-
             <a href="https://discord.francodie.com/" class="join-btn" target="_blank">
                 <i data-lucide="message-square"></i>
                 <span>Rejoindre</span>
@@ -344,37 +290,31 @@
     </header>
 
     <main class="container">
-        <!-- Cartes avec animations Wow au scroll -->
         <div class="card" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box"><i data-lucide="users"></i></div>
             <h3>À propos</h3>
             <p>La Francodie est un pays fictif porté par une communauté Discord active. Un espace chaleureux où l'on se sent chez soi dès la première connexion.</p>
         </div>
-
         <div class="card" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box"><i data-lucide="heart"></i></div>
             <h3>Passions</h3>
             <p>De la grande distribution à l'audiovisuel, nous bâtissons des mondes sur Minecraft Bedrock et Java pour tous les types de joueurs.</p>
         </div>
-
         <div class="card" data-aos="fade-up" data-aos-delay="500">
             <div class="icon-box"><i data-lucide="radio"></i></div>
             <h3>Médias</h3>
             <p>Vivez une expérience RP unique avec nos propres chaînes de télévision et stations de radio diffusant en direct pour la communauté.</p>
         </div>
-
         <div class="card" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box"><i data-lucide="shield"></i></div>
             <h3>Gouvernance</h3>
             <p>Un staff dévoué et une structure organisée pour garantir un environnement sain, respectueux et surtout amusant pour tous.</p>
         </div>
-
         <div class="card" data-aos="fade-up" data-aos-delay="400">
             <div class="icon-box"><i data-lucide="code"></i></div>
             <h3>Technologie</h3>
             <p>Des outils innovants et des serveurs optimisés pour offrir la meilleure expérience possible à nos citoyens numériques.</p>
         </div>
-
         <div class="card" data-aos="fade-up" data-aos-delay="600">
             <div class="icon-box"><i data-lucide="sparkles"></i></div>
             <h3>Événements</h3>
@@ -382,42 +322,27 @@
         </div>
     </main>
 
-    <footer data-aos="fade-in">
+    <footer>
         <p>&copy; <span id="year"></span> République de Francodie</p>
         <div class="footer-links">
             <a href="privacy.html">Confidentialité</a>
-            <a href="#">Mentions Légales</a>
-            <a href="#">Contact</a>
+            <a href="mailto:contact@francodie.com">Contact</a>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialisation AOS
-        AOS.init({
-            duration: 800,
-            easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
-            once: true,
-            mirror: false
-        });
-
-        // Icones
+        AOS.init({ duration: 800, once: true });
         lucide.createIcons();
-
-        // Année
         document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Effet Navbar au Scroll
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             if (window.scrollY > 50) {
                 nav.style.maxWidth = '950px';
                 nav.style.background = 'rgba(10, 10, 10, 0.95)';
-                nav.style.boxShadow = '0 10px 40px rgba(0,0,0,0.6)';
             } else {
                 nav.style.maxWidth = '1100px';
                 nav.style.background = 'rgba(15, 15, 15, 0.7)';
-                nav.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.4)';
             }
         });
     </script>

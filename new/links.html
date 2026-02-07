@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francodie - Liens</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --glass-bg: rgba(15, 15, 15, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --accent-color: #ff8000;
+            --accent-glow: rgba(255, 128, 0, 0.4);
+            --text-main: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.6);
+            --radius-xl: 50px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: #050505;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .bg-visuals {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .glow-1 {
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(255, 128, 0, 0.1) 0%, transparent 70%);
+            filter: blur(80px);
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 25px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+            padding: 0 20px;
+        }
+
+        nav {
+            width: 100%;
+            max-width: 1100px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: 0.6rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-left { display: flex; align-items: center; gap: 12px; }
+        .brand-logo { width: 42px; height: 30px; object-fit: cover; border-radius: 10px; }
+        .nav-title h1 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, var(--text-dim));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-center {
+            display: flex;
+            background: rgba(255,255,255,0.03);
+            padding: 4px;
+            border-radius: 30px;
+            gap: 5px;
+        }
+
+        .nav-link {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 8px 18px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active { color: #fff; background: rgba(255, 128, 0, 0.1); }
+        .nav-link.active { color: var(--accent-color); background: rgba(255, 128, 0, 0.15); }
+
+        .join-btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px var(--accent-glow);
+            transition: 0.4s;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 14rem 2rem 4rem;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span { color: var(--accent-color); }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            font-weight: 300;
+        }
+
+        /* Links Grid */
+        .links-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem 8rem;
+            width: 100%;
+        }
+
+        .link-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .link-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-color);
+            transform: translateX(10px);
+        }
+
+        .link-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .link-icon {
+            width: 54px;
+            height: 54px;
+            background: rgba(255, 128, 0, 0.1);
+            border: 1px solid rgba(255, 128, 0, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            transition: 0.3s;
+        }
+
+        .link-card:hover .link-icon {
+            background: var(--accent-color);
+            color: white;
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .link-info h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .link-info p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .restricted-badge {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 10px;
+        }
+
+        .arrow-icon {
+            color: var(--text-dim);
+            opacity: 0.3;
+            transition: 0.3s;
+        }
+
+        .link-card:hover .arrow-icon {
+            opacity: 1;
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--glass-border);
+            margin-top: auto;
+        }
+
+        footer p { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 0.5rem; }
+        footer a { color: var(--text-dim); text-decoration: none; transition: 0.3s; }
+        footer a:hover { color: var(--accent-color); }
+
+        @media (max-width: 768px) {
+            .nav-center { display: none; }
+            .hero { padding-top: 10rem; }
+            .link-card { padding: 1.2rem 1.5rem; }
+            .link-icon { width: 44px; height: 44px; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-visuals">
+        <div class="glow-1"></div>
+    </div>
+
+    <!-- Navigation Standardisée -->
+    <div class="nav-container">
+        <nav data-aos="fade-down">
+            <div class="nav-left">
+                <img src="cdn/drapeau.png" alt="Francodie" class="brand-logo" onerror="this.src='https://placehold.co/40x28/ff8000/white?text=F'">
+                <div class="nav-title">
+                    <h1>Francodie</h1>
+                </div>
+            </div>
+            
+            <div class="nav-center">
+                <a href="index.html" class="nav-link">Accueil</a>
+                <a href="staff.html" class="nav-link">Staff</a>
+                <a href="about.html" class="nav-link">À propos</a>
+                <a href="links.html" class="nav-link active">Liens</a>
+            </div>
+
+            <a href="https://discord.francodie.com/" class="join-btn" target="_blank">
+                <i data-lucide="message-square"></i>
+                <span style="display: inline-block; margin-left: 5px;">Rejoindre</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1 data-aos="zoom-out-up">Nos <span>Liens</span></h1>
+        <p data-aos="fade-up" data-aos-delay="200">Tous les services et ressources de la République de Francodie</p>
+    </header>
+
+    <!-- Links List -->
+    <main class="links-grid">
+        <a href="https://francodie.com" class="link-card" target="_blank" data-aos="fade-up" data-aos-delay="100">
+            <div class="link-left">
+                <div class="link-icon"><i data-lucide="home"></i></div>
+                <div class="link-info">
+                    <h2>Site principal</h2>
+                    <p>francodie.com</p>
+                </div>
+            </div>
+            <i data-lucide="chevron-right" class="arrow-icon"></i>
+        </a>
+
+        <a href="https://discord.francodie.com" class="link-card" target="_blank" data-aos="fade-up" data-aos-delay="200">
+            <div class="link-left">
+                <div class="link-icon"><i data-lucide="message-circle"></i></div>
+                <div class="link-info">
+                    <h2>Serveur Discord</h2>
+                    <p>discord.francodie.com</p>
+                </div>
+            </div>
+            <i data-lucide="chevron-right" class="arrow-icon"></i>
+        </a>
+
+        <a href="https://play.francodie.com" class="link-card" target="_blank" data-aos="fade-up" data-aos-delay="300">
+            <div class="link-left">
+                <div class="link-icon"><i data-lucide="radio"></i></div>
+                <div class="link-info">
+                    <h2>Radioplayer</h2>
+                    <p>play.francodie.com</p>
+                </div>
+            </div>
+            <i data-lucide="chevron-right" class="arrow-icon"></i>
+        </a>
+
+        <a href="https://radios.francodie.com" class="link-card" target="_blank" data-aos="fade-up" data-aos-delay="400">
+            <div class="link-left">
+                <div class="link-icon"><i data-lucide="lock"></i></div>
+                <div class="link-info">
+                    <h2 style="display: flex; align-items: center;">Panel AzuraCast <span class="restricted-badge">Restreint</span></h2>
+                    <p>radios.francodie.com</p>
+                </div>
+            </div>
+            <i data-lucide="chevron-right" class="arrow-icon"></i>
+        </a>
+
+        <a href="https://blog.francodie.com" class="link-card" target="_blank" data-aos="fade-up" data-aos-delay="500">
+            <div class="link-left">
+                <div class="link-icon"><i data-lucide="file-text"></i></div>
+                <div class="link-info">
+                    <h2>Blog</h2>
+                    <p>blog.francodie.com</p>
+                </div>
+            </div>
+            <i data-lucide="chevron-right" class="arrow-icon"></i>
+        </a>
+
+        <a href="https://francodie.com/minecraft" class="link-card" target="_blank" data-aos="fade-up" data-aos-delay="600">
+            <div class="link-left">
+                <div class="link-icon"><i data-lucide="layout"></i></div>
+                <div class="link-info">
+                    <h2>Serveur Minecraft (Infos)</h2>
+                    <p>francodie.com/minecraft</p>
+                </div>
+            </div>
+            <i data-lucide="chevron-right" class="arrow-icon"></i>
+        </a>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="year"></span> République de Francodie</p>
+        <p><a href="privacy.html">Politique de confidentialité</a></p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+        lucide.createIcons();
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.maxWidth = '950px';
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            } else {
+                nav.style.maxWidth = '1100px';
+                nav.style.background = 'rgba(15, 15, 15, 0.7)';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francodie - À propos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --glass-bg: rgba(15, 15, 15, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --accent-color: #ff8000;
+            --accent-glow: rgba(255, 128, 0, 0.4);
+            --text-main: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.6);
+            --radius-xl: 50px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: #050505;
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .bg-visuals {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .glow-1 {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(255, 128, 0, 0.1) 0%, transparent 70%);
+            filter: blur(80px);
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 25px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+            padding: 0 20px;
+        }
+
+        nav {
+            width: 100%;
+            max-width: 1100px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: 0.6rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-left { display: flex; align-items: center; gap: 12px; }
+        .brand-logo { width: 42px; height: 30px; object-fit: cover; border-radius: 10px; }
+        .nav-title h1 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, var(--text-dim));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-center {
+            display: flex;
+            background: rgba(255,255,255,0.03);
+            padding: 4px;
+            border-radius: 30px;
+            gap: 5px;
+        }
+
+        .nav-link {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 8px 18px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active { color: #fff; background: rgba(255, 128, 0, 0.1); }
+        .nav-link.active { color: var(--accent-color); background: rgba(255, 128, 0, 0.15); }
+
+        .join-btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px var(--accent-glow);
+            transition: 0.4s;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 16rem 2rem 8rem;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 12vw, 6.5rem);
+            line-height: 0.9;
+            font-weight: 800;
+            margin-bottom: 2.5rem;
+            letter-spacing: -3px;
+        }
+
+        .hero h1 span {
+            color: var(--accent-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Sections de contenu */
+        .about-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem 8rem;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            padding: 4rem;
+            margin-bottom: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            transition: 0.5s ease;
+        }
+
+        .section-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: var(--accent-color);
+            transform: translateY(-10px);
+        }
+
+        .section-card.reverse { direction: rtl; }
+        .section-card.reverse > * { direction: ltr; }
+
+        .section-content h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            color: #fff;
+        }
+
+        .section-content p {
+            font-size: 1.05rem;
+            color: var(--text-dim);
+            line-height: 1.8;
+        }
+
+        .section-content a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .section-image {
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 1px solid var(--glass-border);
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* Suppression du scale au survol */
+        }
+
+        .full-image-card {
+            width: 100%;
+            border-radius: 40px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            margin-top: 2rem;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .full-image-card img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 8rem 2rem;
+            border-top: 1px solid var(--glass-border);
+            position: relative;
+        }
+
+        .footer-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--accent-color); }
+
+        @media (max-width: 968px) {
+            .nav-center { display: none; }
+            .section-card { grid-template-columns: 1fr; padding: 2.5rem; gap: 2.5rem; }
+            .section-card.reverse { direction: ltr; }
+            .hero { padding-top: 12rem; }
+            .footer-links { gap: 20px; flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-visuals">
+        <div class="glow-1"></div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-container">
+        <nav data-aos="fade-down" data-aos-duration="1000">
+            <div class="nav-left">
+                <img src="cdn/drapeau.png" alt="Francodie" class="brand-logo" onerror="this.src='https://placehold.co/40x28/ff8000/white?text=F'">
+                <div class="nav-title">
+                    <h1>Francodie</h1>
+                </div>
+            </div>
+            
+            <div class="nav-center">
+                <a href="index.html" class="nav-link">Accueil</a>
+                <a href="staff.html" class="nav-link">Staff</a>
+                <a href="about.html" class="nav-link active">À propos</a>
+                <a href="links.html" class="nav-link">Liens</a>
+            </div>
+
+            <a href="https://discord.francodie.com/" class="join-btn" target="_blank">
+                <i data-lucide="message-square"></i>
+                <span style="display: inline-block; margin-left: 5px;">Rejoindre</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Titre Hero -->
+    <header class="hero">
+        <h1 data-aos="zoom-out-up" data-aos-duration="1200">À propos de la <span>Francodie</span></h1>
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">Plongez dans l'histoire, les projets et l'univers de notre République numérique.</p>
+    </header>
+
+    <main class="about-container">
+        <!-- Le commencement -->
+        <div class="section-card" data-aos="fade-up">
+            <div class="section-content">
+                <h2>Le commencement</h2>
+                <p>La Francodie est née à la suite de la séparation avec un autre serveur Discord. Le 10 mai 2025 à 14h32, le serveur voit officiellement le jour. Le tout premier message publié fut une photo affichant la date et l’heure exactes de sa création, immédiatement suivie d’un simple mais mémorable : « bon bon bon », envoyé par Cube, fondateur de la Francodie.</p>
+            </div>
+            <div class="section-image">
+                <img src="/cdn/about/beginning.png" alt="Le commencement">
+            </div>
+        </div>
+
+        <!-- La grande distribution -->
+        <div class="section-card reverse" data-aos="fade-up">
+            <div class="section-content">
+                <h2>La grande distribution</h2>
+                <p>La Francodie développe un univers fictif entièrement dédié à la grande distribution. On y retrouve des groupes, des enseignes, ainsi qu’un réseau de succursales réparties sur une carte My Maps. Autour de cet univers gravitent de nombreux systèmes et mécaniques qui enrichissent l’ensemble et donnent vie à un monde cohérent, en constante évolution.</p>
+            </div>
+            <div class="section-image">
+                <img src="cdn/about/distrib.png" alt="La grande distribution">
+            </div>
+        </div>
+
+        <!-- L'audiovisuel -->
+        <div class="section-card" data-aos="fade-up">
+            <div class="section-content">
+                <h2>L'audiovisuel</h2>
+                <p>La Francodie possède son propre univers audiovisuel fictif. Une TNT imaginaire regroupe des chaînes de télévision fictives, entièrement créées et proposées par les membres. Le serveur accueille également plusieurs radios fictives, diffusées directement sur Discord. Certaines radios peuvent être écoutées via un service de diffusion en ligne, reposant sur AzuraCast <a href="https://play.francodie.com/" target="_blank">(accessible ici)</a>.</p>
+            </div>
+            <div class="section-image">
+                <img src="cdn/about/audiovisu.png" alt="L'audiovisuel">
+            </div>
+        </div>
+
+        <!-- L'activité -->
+        <div class="section-card reverse" data-aos="fade-up">
+            <div class="section-content">
+                <h2>L'activité et les membres</h2>
+                <p>La Francodie est avant tout une communauté accueillante, active et conviviale. L’activité est soutenue, aussi bien à l’écrit qu’en salons vocaux. Les projets communs, les échanges quotidiens et les moments de détente contribuent à faire vivre le serveur jour après jour.</p>
+            </div>
+            <div class="section-image">
+                <img src="cdn/about/serveur.png" alt="Les membres et l'activité">
+            </div>
+        </div>
+
+        <!-- Bannière Neutre -->
+        <div class="full-image-card" data-aos="zoom-in">
+            <img src="cdn/about/banner-neutre.png" alt="Bannière Francodie">
+        </div>
+    </main>
+
+    <footer data-aos="fade-in">
+        <p>&copy; <span id="year"></span> République de Francodie</p>
+        <div class="footer-links">
+            <a href="privacy.html">Confidentialité</a>
+            <a href="#">Mentions Légales</a>
+            <a href="#">Contact</a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        lucide.createIcons();
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.maxWidth = '950px';
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+                nav.style.boxShadow = '0 10px 40px rgba(0,0,0,0.6)';
+            } else {
+                nav.style.maxWidth = '1100px';
+                nav.style.background = 'rgba(15, 15, 15, 0.7)';
+                nav.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.4)';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Francodie - Équipe</title>
+    <title>Francodie - République Numérique</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -18,11 +18,10 @@
             --text-main: #ffffff;
             --text-dim: rgba(255, 255, 255, 0.6);
             --radius-xl: 50px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-lg: 24px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
             background: #050505;
@@ -32,22 +31,9 @@
             line-height: 1.6;
         }
 
-        .bg-visuals {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .glow-1 {
-            position: absolute;
-            top: -10%;
-            right: -10%;
-            width: 60vw;
-            height: 60vw;
-            background: radial-gradient(circle, rgba(255, 128, 0, 0.1) 0%, transparent 70%);
-            filter: blur(80px);
-        }
+        .bg-visuals { position: fixed; inset: 0; z-index: -1; overflow: hidden; }
+        .glow-1 { position: absolute; top: -10%; right: -10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(255, 128, 0, 0.15) 0%, transparent 70%); filter: blur(80px); }
+        .glow-2 { position: absolute; bottom: -10%; left: -10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(255, 128, 0, 0.05) 0%, transparent 70%); filter: blur(60px); }
 
         /* --- NAVIGATION --- */
         .nav-container {
@@ -117,11 +103,11 @@
             text-decoration: none;
             font-weight: 700;
             font-size: 0.85rem;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             display: flex;
             align-items: center;
             gap: 10px;
             box-shadow: 0 4px 15px var(--accent-glow);
-            transition: 0.4s;
         }
 
         .mobile-toggle {
@@ -189,36 +175,22 @@
             cursor: pointer;
         }
 
-        /* --- CONTENU STAFF --- */
-        .hero { padding: 12rem 2rem 4rem; text-align: center; max-width: 1000px; margin: 0 auto; }
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; margin-bottom: 1rem; letter-spacing: -2px; }
-        .hero p { color: var(--text-dim); font-size: 1.2rem; font-weight: 300; }
+        /* --- HERO --- */
+        .hero { padding: 16rem 2rem 8rem; text-align: center; max-width: 1000px; margin: 0 auto; }
+        .hero h1 { font-size: clamp(3rem, 12vw, 6.5rem); line-height: 0.9; font-weight: 800; margin-bottom: 2.5rem; letter-spacing: -3px; }
+        .hero h1 span { color: var(--accent-color); position: relative; display: inline-block; }
+        .hero p { font-size: clamp(1.2rem, 3vw, 1.6rem); color: var(--text-dim); max-width: 700px; margin: 0 auto; font-weight: 300; }
 
-        .staff-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 2rem 8rem; }
-        .staff-section { margin-bottom: 6rem; }
-        .section-header { display: flex; align-items: center; gap: 20px; margin-bottom: 3rem; }
-        .section-header h2 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent-color); white-space: nowrap; }
-        .section-header .line { height: 1px; background: linear-gradient(to right, var(--accent-color), transparent); width: 100%; opacity: 0.3; }
+        /* --- CARDS --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem 10rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+        .card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); padding: 3.5rem 2.5rem; border-radius: 40px; transition: all 0.5s ease; position: relative; overflow: hidden; }
+        .card:hover { transform: translateY(-15px); border-color: var(--accent-color); background: rgba(255, 255, 255, 0.04); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
+        .icon-box { width: 70px; height: 70px; background: rgba(255, 128, 0, 0.1); border-radius: 22px; display: flex; align-items: center; justify-content: center; color: var(--accent-color); margin-bottom: 2rem; transition: 0.5s; }
+        .card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
+        .card p { color: var(--text-dim); font-size: 1.05rem; line-height: 1.8; }
 
-        .staff-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 2rem; }
-        .staff-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--glass-border);
-            border-radius: 32px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
-        }
-
-        .staff-card:hover { transform: translateY(-10px); border-color: var(--accent-color); background: rgba(255, 255, 255, 0.06); }
-        .avatar-container { width: 120px; height: 120px; margin: 0 auto 1.5rem; }
-        .staff-avatar { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255, 128, 0, 0.2); padding: 5px; }
-        .staff-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.3rem; color: #fff; }
-        .staff-role { font-size: 0.9rem; color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem; }
-        .staff-username { font-size: 0.8rem; color: var(--text-dim); background: rgba(255,255,255,0.05); padding: 4px 12px; border-radius: 20px; display: inline-block; }
-
-        footer { text-align: center; padding: 8rem 2rem; border-top: 1px solid var(--glass-border); }
+        /* --- FOOTER --- */
+        footer { text-align: center; padding: 8rem 2rem; border-top: 1px solid var(--glass-border); position: relative; }
         .footer-links { margin-top: 2rem; display: flex; justify-content: center; gap: 40px; }
         .footer-links a { color: var(--text-dim); text-decoration: none; transition: 0.3s; }
         .footer-links a:hover { color: var(--accent-color); }
@@ -231,24 +203,27 @@
     </style>
 </head>
 <body>
-    <div class="bg-visuals"><div class="glow-1"></div></div>
+    <div class="bg-visuals">
+        <div class="glow-1"></div>
+        <div class="glow-2"></div>
+    </div>
 
     <!-- Navigation -->
     <div class="nav-container">
-        <nav data-aos="fade-down">
+        <nav id="mainNav" data-aos="fade-down" data-aos-duration="1000">
             <div class="nav-left">
                 <img src="cdn/drapeau.png" alt="Francodie" class="brand-logo" onerror="this.src='https://placehold.co/40x28/ff8000/white?text=F'">
                 <div class="nav-title"><h1>Francodie</h1></div>
             </div>
             
             <div class="nav-center">
-                <a href="index.html" class="nav-link">Accueil</a>
-                <a href="staff.html" class="nav-link active">Staff</a>
+                <a href="index.html" class="nav-link active">Accueil</a>
+                <a href="staff.html" class="nav-link">Staff</a>
                 <a href="about.html" class="nav-link">À propos</a>
                 <a href="links.html" class="nav-link">Liens</a>
             </div>
 
-            <div style="display: flex; gap: 15px; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 15px;">
                 <a href="https://discord.francodie.com/" class="join-btn" target="_blank">
                     <i data-lucide="message-square"></i>
                     <span>Rejoindre</span>
@@ -272,76 +247,41 @@
     </div>
 
     <header class="hero">
-        <h1 data-aos="zoom-out-up">L'Équipe</h1>
-        <p data-aos="fade-up" data-aos-delay="200">Les citoyens qui font battre le cœur de la République.</p>
+        <h1 data-aos="zoom-out-up" data-aos-duration="1200">Bienvenue en <br><span>Francodie</span></h1>
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">Une république numérique vibrante basée sur la convivialité, la passion des médias & de la grande distribution, et la créativité Minecraftienne.</p>
     </header>
 
-    <main class="staff-wrapper">
-        <section class="staff-section">
-            <div class="section-header" data-aos="fade-right">
-                <h2>Direction</h2>
-                <div class="line"></div>
-            </div>
-            <div class="staff-grid">
-                <div class="staff-card" data-aos="fade-up">
-                    <div class="avatar-container">
-                        <img src="cdn/staff/breizh.png" alt="Créa'BREIZH" class="staff-avatar" onerror="this.src='https://placehold.co/120x120/333/fff?text=CB'">
-                    </div>
-                    <div class="staff-name">Créa'BREIZH</div>
-                    <div class="staff-role">Président</div>
-                    <div class="staff-username">@creabreizh</div>
-                </div>
-                <div class="staff-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="avatar-container">
-                        <img src="cdn/staff/nathan.png" alt="NathxnAzuur" class="staff-avatar" onerror="this.src='https://placehold.co/120x120/333/fff?text=NA'">
-                    </div>
-                    <div class="staff-name">NathxnAzuur</div>
-                    <div class="staff-role">Vice-président</div>
-                    <div class="staff-username">@nathxnazuur</div>
-                </div>
-                <div class="staff-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="avatar-container">
-                        <img src="cdn/staff/cube.png" alt="Cube" class="staff-avatar" onerror="this.src='https://placehold.co/120x120/333/fff?text=C'">
-                    </div>
-                    <div class="staff-name">Cube</div>
-                    <div class="staff-role">1er Ministre, Fondateur</div>
-                    <div class="staff-username">@cube76lh</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="staff-section">
-            <div class="section-header" data-aos="fade-right">
-                <h2>Ministres</h2>
-                <div class="line"></div>
-            </div>
-            <div class="staff-grid">
-                <div class="staff-card" data-aos="fade-up">
-                    <div class="avatar-container">
-                        <img src="cdn/staff/corian.png" alt="Corian" class="staff-avatar" onerror="this.src='https://placehold.co/120x120/333/fff?text=CO'">
-                    </div>
-                    <div class="staff-name">Corian</div>
-                    <div class="staff-role">Ministre</div>
-                    <div class="staff-username">@corian62</div>
-                </div>
-                <div class="staff-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="avatar-container">
-                        <img src="cdn/staff/mathys.png" alt="Mathys" class="staff-avatar" onerror="this.src='https://placehold.co/120x120/333/fff?text=MA'">
-                    </div>
-                    <div class="staff-name">Mathys</div>
-                    <div class="staff-role">Ministre</div>
-                    <div class="staff-username">@mrjavel59</div>
-                </div>
-                <div class="staff-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="avatar-container">
-                        <img src="cdn/staff/ryan.png" alt="RC'" class="staff-avatar" onerror="this.src='https://placehold.co/120x120/333/fff?text=RC'">
-                    </div>
-                    <div class="staff-name">RC'</div>
-                    <div class="staff-role">Ministre</div>
-                    <div class="staff-username">@rca37</div>
-                </div>
-            </div>
-        </section>
+    <main class="container">
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box"><i data-lucide="users"></i></div>
+            <h3>À propos</h3>
+            <p>La Francodie est un pays fictif porté par une communauté Discord active. Un espace chaleureux où l'on se sent chez soi dès la première connexion.</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon-box"><i data-lucide="heart"></i></div>
+            <h3>Passions</h3>
+            <p>De la grande distribution à l'audiovisuel, nous bâtissons des mondes sur Minecraft Bedrock et Java pour tous les types de joueurs.</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon-box"><i data-lucide="radio"></i></div>
+            <h3>Médias</h3>
+            <p>Vivez une expérience RP unique avec nos propres chaînes de télévision et stations de radio diffusant en direct pour la communauté.</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box"><i data-lucide="shield"></i></div>
+            <h3>Gouvernance</h3>
+            <p>Un staff dévoué et une structure organisée pour garantir un environnement sain, respectueux et surtout amusant pour tous.</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="400">
+            <div class="icon-box"><i data-lucide="code"></i></div>
+            <h3>Technologie</h3>
+            <p>Des outils innovants et des serveurs optimisés pour offrir la meilleure expérience possible à nos citoyens numériques.</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="600">
+            <div class="icon-box"><i data-lucide="sparkles"></i></div>
+            <h3>Événements</h3>
+            <p>Des soirées jeux, des débats et des projets communautaires réguliers pour animer la vie de la République au quotidien.</p>
+        </div>
     </main>
 
     <footer>
@@ -354,9 +294,21 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 800, once: true });
         lucide.createIcons();
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Scroll behaviour
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.maxWidth = '950px';
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            } else {
+                nav.style.maxWidth = '1100px';
+                nav.style.background = 'rgba(15, 15, 15, 0.7)';
+            }
+        });
 
         // Mobile Menu Logic
         const openBtn = document.getElementById('openMenu');
@@ -378,18 +330,6 @@
 
         overlay.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => toggleMenu(false));
-        });
-
-        // Effet scroll nav
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.maxWidth = '950px';
-                nav.style.background = 'rgba(10, 10, 10, 0.95)';
-            } else {
-                nav.style.maxWidth = '1100px';
-                nav.style.background = 'rgba(15, 15, 15, 0.7)';
-            }
         });
     </script>
 </body>

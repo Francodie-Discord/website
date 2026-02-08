@@ -112,7 +112,7 @@
             box-shadow: 0 4px 15px var(--accent-glow);
         }
 
-        /* --- MOBILE MENU BUTTON --- */
+        /* --- MOBILE TOGGLE BUTTON --- */
         .mobile-toggle {
             display: none;
             background: transparent;
@@ -121,36 +121,70 @@
             cursor: pointer;
             padding: 8px;
             z-index: 3001;
+            transition: transform 0.3s ease;
         }
+        
+        .mobile-toggle:active { transform: scale(0.9); }
 
         /* --- MOBILE OVERLAY --- */
         .mobile-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(5, 5, 5, 0.98);
-            backdrop-filter: blur(15px);
+            background: rgba(5, 5, 5, 0.85); /* Semi-transparent */
+            backdrop-filter: blur(12px); /* Effet de flou */
+            -webkit-backdrop-filter: blur(12px);
             z-index: 2500;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 2rem;
+            gap: 2.5rem;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .mobile-overlay.active { opacity: 1; visibility: visible; }
         
         .mobile-overlay a {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: white;
             text-decoration: none;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .mobile-overlay.active a {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: calc(var(--i) * 0.1s);
         }
 
         .mobile-overlay a:hover { color: var(--accent-color); }
+
+        /* Close button inside overlay */
+        .close-menu {
+            position: absolute;
+            top: 35px;
+            right: 35px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .close-menu:hover { background: var(--accent-color); border-color: var(--accent-color); }
 
         /* --- HERO --- */
         .hero { padding: 16rem 2rem 8rem; text-align: center; max-width: 1000px; margin: 0 auto; }
@@ -186,12 +220,12 @@
 <body>
     <div class="bg-visuals">
         <div class="glow-1"></div>
-        <div class="glow-2"></div>
+        <div class="glow-2) "></div>
     </div>
 
     <!-- Navigation -->
     <div class="nav-container">
-        <nav data-aos="fade-down" data-aos-duration="1000">
+        <nav id="mainNav" data-aos="fade-down" data-aos-duration="1000">
             <div class="nav-left">
                 <img src="cdn/drapeau.png" alt="Francodie" class="brand-logo" onerror="this.src='https://placehold.co/40x28/ff8000/white?text=F'">
                 <div class="nav-title"><h1>Francodie</h1></div>
@@ -210,8 +244,8 @@
                     <span>Rejoindre</span>
                 </a>
                 
-                <button class="mobile-toggle" id="menuToggle">
-                    <i data-lucide="menu" id="menuIcon"></i>
+                <button class="mobile-toggle" id="openMenu">
+                    <i data-lucide="menu"></i>
                 </button>
             </div>
         </nav>
@@ -219,10 +253,13 @@
 
     <!-- Mobile Overlay -->
     <div class="mobile-overlay" id="mobileOverlay">
-        <a href="index.html">Accueil</a>
-        <a href="staff.html">Staff</a>
-        <a href="about.html">À propos</a>
-        <a href="links.html">Liens</a>
+        <button class="close-menu" id="closeMenu">
+            <i data-lucide="x"></i>
+        </button>
+        <a href="index.html" style="--i:1">Accueil</a>
+        <a href="staff.html" style="--i:2">Staff</a>
+        <a href="about.html" style="--i:3">À propos</a>
+        <a href="links.html" style="--i:4">Liens</a>
     </div>
 
     <header class="hero">
@@ -231,7 +268,6 @@
     </header>
 
     <main class="container">
-        <!-- Cards existantes -->
         <div class="card" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box"><i data-lucide="users"></i></div>
             <h3>À propos</h3>
@@ -274,12 +310,11 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialisations
         AOS.init({ duration: 800, once: true });
         lucide.createIcons();
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Gestion du Scroll pour la Nav
+        // Scroll behaviour
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             if (window.scrollY > 50) {
@@ -291,25 +326,27 @@
             }
         });
 
-        // Logique Menu Hamburger
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileOverlay = document.getElementById('mobileOverlay');
-        const menuIcon = document.getElementById('menuIcon');
-        let isMenuOpen = false;
+        // Mobile Menu Logic
+        const openBtn = document.getElementById('openMenu');
+        const closeBtn = document.getElementById('closeMenu');
+        const overlay = document.getElementById('mobileOverlay');
 
-        menuToggle.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            mobileOverlay.classList.toggle('active');
-            
-            // Switch d'icône
-            if (isMenuOpen) {
-                menuIcon.setAttribute('data-lucide', 'x');
+        function toggleMenu(state) {
+            if (state) {
+                overlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
             } else {
-                menuIcon.setAttribute('data-lucide', 'menu');
+                overlay.classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
-            lucide.createIcons();
+        }
+
+        openBtn.addEventListener('click', () => toggleMenu(true));
+        closeBtn.addEventListener('click', () => toggleMenu(false));
+
+        // Fermer le menu si on clique sur un lien
+        overlay.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => toggleMenu(false));
         });
     </script>
 </body>

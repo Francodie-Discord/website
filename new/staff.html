@@ -264,11 +264,87 @@
 
         .footer-links a:hover { color: var(--accent-color); }
 
+        /* --- MOBILE TOGGLE BUTTON --- */
+        .mobile-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 3001;
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-toggle:active { transform: scale(0.9); }
+
+        /* --- MOBILE OVERLAY --- */
+        .mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 5, 5, 0.85); /* Semi-transparent */
+            backdrop-filter: blur(12px); /* Effet de flou */
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 2500;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-overlay.active { opacity: 1; visibility: visible; }
+        
+        .mobile-overlay a {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .mobile-overlay.active a {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: calc(var(--i) * 0.1s);
+        }
+
+        .mobile-overlay a:hover { color: var(--accent-color); }
+
+        /* Close button inside overlay */
+        .close-menu {
+            position: absolute;
+            top: 35px;
+            right: 35px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .close-menu:hover { background: var(--accent-color); border-color: var(--accent-color); }
+
         @media (max-width: 900px) {
             .nav-center { display: none; }
             .hero { padding-top: 10rem; }
             .staff-grid { grid-template-columns: 1fr; }
             .footer-links { gap: 20px; flex-wrap: wrap; }
+            .mobile-toggle { display: block; }
+            .join-btn span { display: none; }
         }
     </style>
 </head>
@@ -278,20 +354,29 @@
     </div>
 
     <div class="nav-container">
-        <nav data-aos="fade-down">
+        <nav id="mainNav" data-aos="fade-down" data-aos-duration="1000">
             <div class="nav-left">
                 <img src="cdn/drapeau.png" alt="Francodie" class="brand-logo" onerror="this.src='https://placehold.co/40x28/ff8000/white?text=F'">
                 <div class="nav-title"><h1>Francodie</h1></div>
             </div>
+            
             <div class="nav-center">
-                <a href="index.html" class="nav-link">Accueil</a>
-                <a href="staff.html" class="nav-link active">Staff</a>
+                <a href="index.html" class="nav-link active">Accueil</a>
+                <a href="staff.html" class="nav-link">Staff</a>
                 <a href="about.html" class="nav-link">À propos</a>
                 <a href="links.html" class="nav-link">Liens</a>
             </div>
-            <a href="https://discord.francodie.com/" class="join-btn" target="_blank">
-                <i data-lucide="message-square"></i>
-            </a>
+
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <a href="https://discord.francodie.com/" class="join-btn" target="_blank">
+                    <i data-lucide="message-square"></i>
+                    <span>Rejoindre</span>
+                </a>
+                
+                <button class="mobile-toggle" id="openMenu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
         </nav>
     </div>
 
@@ -430,6 +515,29 @@
                 nav.style.maxWidth = '1100px';
                 nav.style.background = 'rgba(15, 15, 15, 0.7)';
             }
+        });
+
+        // Mobile Menu Logic
+        const openBtn = document.getElementById('openMenu');
+        const closeBtn = document.getElementById('closeMenu');
+        const overlay = document.getElementById('mobileOverlay');
+
+        function toggleMenu(state) {
+            if (state) {
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        openBtn.addEventListener('click', () => toggleMenu(true));
+        closeBtn.addEventListener('click', () => toggleMenu(false));
+
+        // Fermer le menu si on clique sur un lien
+        overlay.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => toggleMenu(false));
         });
     </script>
 </body>

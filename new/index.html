@@ -258,32 +258,33 @@
             .join-btn span { display: none; }
         }
 
-        /* Styles du bouton Toggle */
         .mobile-menu-toggle {
-            display: none; /* Caché sur desktop */
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
+            display: none;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
-            padding: 10px;
-            border-radius: 12px;
+            padding: 8px;
+            border-radius: 8px;
             cursor: pointer;
-            z-index: 2001;
-            transition: 0.3s;
+            z-index: 2100;
+            position: relative;
         }
 
-        /* Overlay du menu mobile */
         .mobile-nav-overlay {
             position: fixed;
-            inset: 0;
-            background: rgba(5, 5, 5, 0.98);
-            backdrop-filter: blur(15px);
-            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            z-index: 2000;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
         }
 
         .mobile-nav-overlay.active {
@@ -294,44 +295,21 @@
         .mobile-nav-content {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 25px;
-            transform: translateY(30px);
-            transition: 0.4s ease;
-        }
-
-        .mobile-nav-overlay.active .mobile-nav-content {
-            transform: translateY(0);
+            gap: 2rem;
+            text-align: center;
         }
 
         .mobile-link {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: white;
             text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
+            font-weight: bold;
         }
 
-        .mobile-link:hover { color: var(--accent-color); }
-
-        .mobile-join-btn {
-            margin-top: 20px;
-            background: var(--accent-color);
-            color: white;
-            padding: 15px 35px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 10px 25px var(--accent-glow);
-        }
-
-        /* Media Query pour afficher le bouton sur mobile */
         @media (max-width: 768px) {
             .mobile-menu-toggle { display: block; }
-            .nav-center, .join-btn { display: none !important; }
+            /* Cachez vos menus desktop ici */
+            .desktop-nav { display: none; } 
         }
     </style>
 </head>
@@ -410,6 +388,18 @@
         </div>
     </footer>
 
+    <div id="mobile-overlay" class="mobile-nav-overlay">
+        <div class="mobile-nav-content">
+            <a href="index.html" class="mobile-link">Accueil</a>
+            <a href="staff.html" class="mobile-link">Staff</a>
+            <a href="about.html" class="mobile-link">À propos</a>
+            <a href="links.html" class="mobile-link">Liens</a>
+            <a href="https://discord.francodie.com/" class="mobile-join-btn">
+                <i data-lucide="message-square"></i> Rejoindre Discord
+            </a>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 800, once: true });
@@ -426,41 +416,41 @@
             }
         });
 
-        const menuBtn = document.querySelector('.mobile-menu-toggle');
-        const menuOverlay = document.querySelector('.mobile-nav-overlay');
-        const iconMenu = document.querySelector('.icon-menu');
-        const iconClose = document.querySelector('.icon-close');
-        let isMenuOpen = false;
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialise les icônes Lucide
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
 
-        function toggleMenu() {
-            isMenuOpen = !isMenuOpen;
-            menuOverlay.classList.toggle('active');
-            document.body.style.overflow = isMenuOpen ? 'hidden' : ''; // Empêche le scroll
-            
-            iconMenu.style.display = isMenuOpen ? 'none' : 'block';
-            iconClose.style.display = isMenuOpen ? 'block' : 'none';
-        }
+            const btn = document.getElementById('hamburger-btn');
+            const overlay = document.getElementById('mobile-overlay');
+            const openIcon = document.getElementById('icon-open');
+            const closeIcon = document.getElementById('icon-close');
 
-        menuBtn.addEventListener('click', toggleMenu);
+            if (!btn || !overlay) return;
 
-        // Fermer le menu si on clique sur un lien
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if(isMenuOpen) toggleMenu();
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const isOpen = overlay.classList.toggle('active');
+                
+                // Switch d'icônes
+                openIcon.style.display = isOpen ? 'none' : 'block';
+                closeIcon.style.display = isOpen ? 'block' : 'none';
+                
+                // Bloque le scroll du site derrière
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+
+            // Fermeture auto sur clic lien
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                    openIcon.style.display = 'block';
+                    closeIcon.style.display = 'none';
+                });
             });
         });
     </script>
-
-    <div class="mobile-nav-overlay">
-        <div class="mobile-nav-content">
-            <a href="index.html" class="mobile-link">Accueil</a>
-            <a href="staff.html" class="mobile-link">Staff</a>
-            <a href="about.html" class="mobile-link">À propos</a>
-            <a href="links.html" class="mobile-link">Liens</a>
-            <a href="https://discord.francodie.com/" class="mobile-join-btn">
-                <i data-lucide="message-square"></i> Rejoindre Discord
-            </a>
-        </div>
-    </div>
 </body>
 </html>

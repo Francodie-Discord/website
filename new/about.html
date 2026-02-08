@@ -18,6 +18,7 @@
             --text-main: #ffffff;
             --text-dim: rgba(255, 255, 255, 0.6);
             --radius-xl: 50px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,7 +49,7 @@
             filter: blur(80px);
         }
 
-        /* Navigation */
+        /* --- NAVIGATION --- */
         .nav-container {
             position: fixed;
             top: 25px;
@@ -56,7 +57,7 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            z-index: 1000;
+            z-index: 2000;
             padding: 0 20px;
         }
 
@@ -121,6 +122,71 @@
             gap: 10px;
             box-shadow: 0 4px 15px var(--accent-glow);
             transition: 0.4s;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 3001;
+            transition: transform 0.3s ease;
+        }
+
+        /* --- MOBILE OVERLAY --- */
+        .mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 2500;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-overlay.active { opacity: 1; visibility: visible; }
+        
+        .mobile-overlay a {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .mobile-overlay.active a {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: calc(var(--i) * 0.1s);
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 35px;
+            right: 35px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
         }
 
         /* Hero */
@@ -209,13 +275,15 @@
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             border: 1px solid var(--glass-border);
+            padding: 15px; /* Ajout du padding demandé */
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .section-image img {
             width: 100%;
             height: auto;
             display: block;
-            /* Suppression du scale au survol */
+            border-radius: 12px; /* Pour arrondir l'image à l'intérieur du padding */
         }
 
         .full-image-card {
@@ -257,6 +325,8 @@
 
         @media (max-width: 968px) {
             .nav-center { display: none; }
+            .mobile-toggle { display: block; }
+            .join-btn span { display: none; }
             .section-card { grid-template-columns: 1fr; padding: 2.5rem; gap: 2.5rem; }
             .section-card.reverse { direction: ltr; }
             .hero { padding-top: 12rem; }
@@ -271,12 +341,10 @@
 
     <!-- Navigation -->
     <div class="nav-container">
-        <nav data-aos="fade-down" data-aos-duration="1000">
+        <nav data-aos="fade-down">
             <div class="nav-left">
                 <img src="cdn/drapeau.png" alt="Francodie" class="brand-logo" onerror="this.src='https://placehold.co/40x28/ff8000/white?text=F'">
-                <div class="nav-title">
-                    <h1>Francodie</h1>
-                </div>
+                <div class="nav-title"><h1>Francodie</h1></div>
             </div>
             
             <div class="nav-center">
@@ -286,11 +354,27 @@
                 <a href="links.html" class="nav-link">Liens</a>
             </div>
 
-            <a href="https://discord.francodie.com/" class="join-btn" target="_blank">
-                <i data-lucide="message-square"></i>
-                <span style="display: inline-block; margin-left: 5px;">Rejoindre</span>
-            </a>
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <a href="https://discord.francodie.com/" class="join-btn" target="_blank">
+                    <i data-lucide="message-square"></i>
+                    <span>Rejoindre</span>
+                </a>
+                <button class="mobile-toggle" id="openMenu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
         </nav>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay">
+        <button class="close-menu" id="closeMenu">
+            <i data-lucide="x"></i>
+        </button>
+        <a href="index.html" style="--i:1">Accueil</a>
+        <a href="staff.html" style="--i:2">Staff</a>
+        <a href="about.html" style="--i:3">À propos</a>
+        <a href="links.html" style="--i:4">Liens</a>
     </div>
 
     <!-- Titre Hero -->
@@ -364,6 +448,29 @@
         lucide.createIcons();
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        // Mobile Menu Logic
+        const openBtn = document.getElementById('openMenu');
+        const closeBtn = document.getElementById('closeMenu');
+        const overlay = document.getElementById('mobileOverlay');
+
+        function toggleMenu(state) {
+            if (state) {
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        openBtn.addEventListener('click', () => toggleMenu(true));
+        closeBtn.addEventListener('click', () => toggleMenu(false));
+
+        overlay.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => toggleMenu(false));
+        });
+
+        // Effet scroll nav
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             if (window.scrollY > 50) {

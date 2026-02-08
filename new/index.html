@@ -184,8 +184,31 @@
         /* --- CARDS --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem 10rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
         .card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); padding: 3.5rem 2.5rem; border-radius: 40px; transition: all 0.5s ease; position: relative; overflow: hidden; }
+        
+        /* HOVER SUR LA CARTE */
         .card:hover { transform: translateY(-15px); border-color: var(--accent-color); background: rgba(255, 255, 255, 0.04); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
-        .icon-box { width: 70px; height: 70px; background: rgba(255, 128, 0, 0.1); border-radius: 22px; display: flex; align-items: center; justify-content: center; color: var(--accent-color); margin-bottom: 2rem; transition: 0.5s; }
+        
+        /* EFFET DE ROTATION ET COULEUR ICONE (STYLE PAGE LIENS) */
+        .icon-box { 
+            width: 70px; 
+            height: 70px; 
+            background: rgba(255, 128, 0, 0.1); 
+            border: 1px solid rgba(255, 128, 0, 0.2);
+            border-radius: 22px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: var(--accent-color); 
+            margin-bottom: 2rem; 
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .card:hover .icon-box {
+            background: var(--accent-color);
+            color: white;
+            transform: scale(1.1) rotate(-5deg);
+        }
+
         .card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
         .card p { color: var(--text-dim); font-size: 1.05rem; line-height: 1.8; }
 
